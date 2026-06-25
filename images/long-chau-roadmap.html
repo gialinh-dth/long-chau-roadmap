@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Long Châu Diagnostics — Roadmap Thương mại hóa Mô hình Thu nhận mẫu tại Nhà thuốc</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy-900:#071A33;
+  --navy-800:#0B2240;
+  --navy-700:#10305A;
+  --navy-600:#1A4178;
+  --navy-500:#2C5797;
+  --orange:#F47C20;
+  --orange-600:#E26A0E;
+  --orange-soft:#FFF3E9;
+  --ink:#0B1F38;
+  --slate:#5A6B82;
+  --slate-light:#8493A8;
+  --line:#E7ECF3;
+  --bg:#FFFFFF;
+  --bg-gray:#F6F8FB;
+  --bg-navy-grad:linear-gradient(135deg,#071A33 0%,#0B2240 45%,#10305A 100%);
+  --shadow-sm:0 1px 2px rgba(11,34,64,.06),0 4px 16px rgba(11,34,64,.05);
+  --shadow-md:0 8px 30px rgba(11,34,64,.10);
+  --shadow-lg:0 24px 60px rgba(11,34,64,.16);
+  --radius:18px;
+  --radius-lg:26px;
+  --maxw:1180px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  color:var(--ink);
+  background:var(--bg);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+::selection{background:var(--orange);color:#fff}
+a{color:inherit;text-decoration:none}
+
+/* ---------- Progress bar ---------- */
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--orange);z-index:200;transition:width .1s linear}
+
+/* ---------- Nav ---------- */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:150;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px clamp(20px,5vw,56px);
+  background:rgba(255,255,255,.82);
+  backdrop-filter:saturate(180%) blur(18px);
+  -webkit-backdrop-filter:saturate(180%) blur(18px);
+  border-bottom:1px solid transparent;
+  transition:border-color .3s,box-shadow .3s,padding .3s;
+}
+nav.scrolled{border-color:var(--line);box-shadow:0 2px 20px rgba(11,34,64,.05)}
+.brand{display:flex;align-items:center;gap:11px}
+.fpt-mark{width:42px;height:32px;flex:0 0 auto;overflow:visible}
+.markchip{background:#fff;border-radius:9px;padding:6px 10px;display:grid;place-items:center;flex:0 0 auto}
+.markchip .fpt-mark{width:38px;height:28px}
+.brand-logo{height:40px;width:auto;display:block;flex:0 0 auto}
+.markchip .brand-logo{height:28px}
+.markchip.miss-chip{display:none}
+.brandtext{display:flex;flex-direction:column;font-weight:800;font-size:14.5px;letter-spacing:-.01em;color:#1B4FC4;line-height:1.04}
+.brandtext small{font-weight:600;font-size:9.5px;letter-spacing:.13em;color:var(--slate-light);text-transform:uppercase;margin-top:3px}
+.navlinks{display:flex;gap:6px;align-items:center}
+.navlinks a{font-size:13px;font-weight:500;color:var(--slate);padding:8px 13px;border-radius:99px;transition:.2s;white-space:nowrap}
+.navlinks a:hover{color:var(--navy-800);background:var(--bg-gray)}
+.navlinks a.cta{background:var(--navy-800);color:#fff;font-weight:600}
+.navlinks a.cta:hover{background:var(--navy-700)}
+.menu-btn{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:8px}
+.menu-btn span{width:22px;height:2px;background:var(--navy-800);border-radius:2px;transition:.3s}
+
+/* ---------- Layout ---------- */
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(20px,5vw,40px)}
+section{padding:clamp(80px,11vw,150px) 0;position:relative}
+.section-gray{background:var(--bg-gray)}
+.section-navy{background:var(--bg-navy-grad);color:#fff}
+
+/* ---------- Typography ---------- */
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);margin-bottom:22px}
+.eyebrow::before{content:"";width:26px;height:2px;background:var(--orange);border-radius:2px}
+.section-navy .eyebrow{color:#FFB877}
+.section-navy .eyebrow::before{background:#FFB877}
+h1{font-size:clamp(2.6rem,6vw,4.6rem);line-height:1.02;font-weight:800;letter-spacing:-.035em}
+h2{font-size:clamp(1.9rem,4vw,3rem);line-height:1.08;font-weight:800;letter-spacing:-.03em;color:var(--navy-800)}
+.section-navy h2{color:#fff}
+h3{font-size:clamp(1.15rem,2vw,1.45rem);font-weight:700;letter-spacing:-.02em;color:var(--navy-800)}
+.lead{font-size:clamp(1.05rem,1.6vw,1.28rem);color:var(--slate);font-weight:400;line-height:1.7;max-width:760px}
+.section-navy .lead{color:#B9C8DC}
+.kicker-num{font-size:13px;font-weight:700;color:var(--orange);letter-spacing:.1em}
+
+/* ---------- Hero ---------- */
+.hero{
+  min-height:100vh;display:flex;align-items:center;
+  background:var(--bg-navy-grad);color:#fff;position:relative;overflow:hidden;
+  padding-top:90px;
+}
+.hero-grid-bg{position:absolute;inset:0;opacity:.5;
+  background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+  background-size:64px 64px;mask-image:radial-gradient(ellipse 80% 70% at 70% 30%,#000 30%,transparent 80%)}
+.hero-glow{position:absolute;width:680px;height:680px;border-radius:50%;filter:blur(110px);opacity:.4}
+.hero-glow.o{background:var(--orange);top:-180px;right:-120px;opacity:.28}
+.hero-glow.b{background:#2C5797;bottom:-260px;left:-160px;opacity:.5}
+.hero .wrap{position:relative;z-index:2}
+.hero h1{max-width:16ch}
+.hero .grad{background:linear-gradient(100deg,#fff 30%,#FFB877 70%,var(--orange));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-sub{margin-top:30px;font-size:clamp(1.05rem,1.7vw,1.32rem);color:#AFC0D8;max-width:60ch;line-height:1.7;font-weight:400}
+.hero-tag{display:inline-flex;align-items:center;gap:10px;padding:8px 16px;border:1px solid rgba(255,255,255,.18);border-radius:99px;font-size:13px;font-weight:500;color:#CBD8EC;margin-bottom:34px;background:rgba(255,255,255,.04)}
+.hero-tag .dot{width:7px;height:7px;border-radius:50%;background:#3FD08A;box-shadow:0 0 0 4px rgba(63,208,138,.18)}
+.hero-aim{margin-top:60px;font-size:12.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#FFB877}
+.hero-stats{display:flex;flex-wrap:wrap;gap:clamp(28px,5vw,64px);margin-top:24px;padding-top:34px;border-top:1px solid rgba(255,255,255,.12)}
+.hero-stat .v{font-size:clamp(2rem,4vw,2.9rem);font-weight:800;letter-spacing:-.03em;color:#fff;line-height:1}
+.hero-stat .v em{color:var(--orange);font-style:normal}
+.hero-stat .l{font-size:13.5px;color:#9FB2CC;margin-top:10px;font-weight:400;max-width:22ch}
+.scroll-cue{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px;color:#7E93B0;font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+.scroll-cue .mouse{width:24px;height:38px;border:2px solid rgba(255,255,255,.25);border-radius:14px;position:relative}
+.scroll-cue .mouse::after{content:"";position:absolute;top:7px;left:50%;transform:translateX(-50%);width:4px;height:7px;border-radius:2px;background:var(--orange);animation:scrolldot 1.7s infinite}
+@keyframes scrolldot{0%{opacity:0;transform:translate(-50%,0)}30%{opacity:1}60%{opacity:1;transform:translate(-50%,11px)}100%{opacity:0;transform:translate(-50%,11px)}}
+
+/* ---------- Reveal ---------- */
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}.reveal.d4{transition-delay:.32s}.reveal.d5{transition-delay:.40s}
+
+/* ---------- Section head ---------- */
+.shead{max-width:820px;margin-bottom:clamp(46px,6vw,72px)}
+.shead .lead{margin-top:24px}
+
+/* ---------- Cards ---------- */
+.grid{display:grid;gap:22px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:30px;box-shadow:var(--shadow-sm);transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s,border-color .35s}
+.card:hover{transform:translateY(-5px);box-shadow:var(--shadow-md);border-color:#D7E0EC}
+.card .ic{width:50px;height:50px;border-radius:13px;display:grid;place-items:center;background:var(--orange-soft);color:var(--orange-600);margin-bottom:20px}
+.card .ic svg{width:25px;height:25px}
+.card h3{margin-bottom:10px}
+.card p{color:var(--slate);font-size:14.5px;line-height:1.65}
+.section-navy .card{background:rgba(255,255,255,.045);border-color:rgba(255,255,255,.12);box-shadow:none}
+.section-navy .card:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.22)}
+.section-navy .card h3{color:#fff}
+.section-navy .card p{color:#A9BAD2}
+.section-navy .card .ic{background:rgba(244,124,32,.16);color:#FFB877}
+
+/* numbered chip */
+.numchip{width:34px;height:34px;border-radius:10px;background:var(--navy-800);color:#fff;display:grid;place-items:center;font-weight:700;font-size:15px;flex:0 0 auto}
+
+/* ---------- Pilot proof list ---------- */
+.proof{display:grid;gap:14px}
+.proof-item{display:flex;gap:16px;align-items:flex-start;padding:20px 24px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);transition:.3s}
+.proof-item:hover{border-color:#CFE7D8;transform:translateX(4px)}
+.proof-item .tick{width:26px;height:26px;border-radius:50%;background:#E7F7EE;color:#1B9E5E;display:grid;place-items:center;flex:0 0 auto;margin-top:1px}
+.proof-item .tick svg{width:15px;height:15px}
+.proof-item p{font-size:15px;color:var(--ink);font-weight:500}
+
+/* ---------- Transition banner ---------- */
+.transition{display:grid;grid-template-columns:1fr auto 1fr;gap:30px;align-items:center;background:var(--bg-navy-grad);border-radius:var(--radius-lg);padding:clamp(34px,5vw,56px);color:#fff;box-shadow:var(--shadow-lg);position:relative;overflow:hidden}
+.transition .glow{position:absolute;width:420px;height:420px;background:var(--orange);filter:blur(120px);opacity:.18;right:-120px;top:-160px}
+.transition .q{position:relative;z-index:2}
+.transition .q .qlabel{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#FFB877;font-weight:600;margin-bottom:14px}
+.transition .q p{font-size:clamp(1.15rem,2vw,1.55rem);font-weight:700;letter-spacing:-.02em;line-height:1.3}
+.transition .q.past p{color:#7E93B0;font-weight:600}
+.transition .arrow{width:54px;height:54px;border-radius:50%;background:var(--orange);display:grid;place-items:center;flex:0 0 auto;position:relative;z-index:2;box-shadow:0 10px 30px rgba(244,124,32,.4)}
+.transition .arrow svg{width:26px;height:26px;color:#fff}
+
+/* ---------- Breather / rest slides ---------- */
+.breather{background:var(--bg-navy-grad);color:#fff;text-align:center;position:relative;overflow:hidden;padding:clamp(96px,14vw,176px) 0}
+.breather .grid-bg{position:absolute;inset:0;opacity:.5;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 70% 70% at 50% 40%,#000 25%,transparent 78%);-webkit-mask-image:radial-gradient(ellipse 70% 70% at 50% 40%,#000 25%,transparent 78%)}
+.breather .glow{position:absolute;width:560px;height:560px;border-radius:50%;filter:blur(120px);opacity:.22;background:var(--orange);top:-200px;left:50%;transform:translateX(-50%)}
+.breather .glow.b{background:#2C5797;opacity:.4;top:auto;bottom:-260px;left:30%}
+.breather .wrap{position:relative;z-index:2}
+.breather .eyebrow{justify-content:center;color:#FFB877}
+.breather .eyebrow::before{background:#FFB877}
+.breather h2{font-size:clamp(2rem,5.2vw,3.7rem);line-height:1.07;letter-spacing:-.03em;max-width:20ch;margin:0 auto;color:#fff}
+.breather .grad{background:linear-gradient(100deg,#fff 22%,#FFB877 68%,var(--orange));-webkit-background-clip:text;background-clip:text;color:transparent}
+.breather p{color:#9FB2CC;margin:24px auto 0;font-size:clamp(1rem,1.6vw,1.18rem);max-width:50ch;line-height:1.7}
+
+/* ---------- Flow (operating model) ---------- */
+.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;align-items:stretch}
+.lane{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;transition:.35s}
+.lane:hover{box-shadow:var(--shadow-md);transform:translateY(-5px)}
+.lane-head{padding:18px 18px 16px;border-bottom:1px solid var(--line);position:relative}
+.lane-head .pill{display:inline-flex;align-items:center;gap:7px;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--navy-600)}
+.lane-head .pill .d{width:7px;height:7px;border-radius:50%;background:var(--orange)}
+.lane-head h4{font-size:15.5px;font-weight:800;color:var(--navy-800);margin-top:9px;letter-spacing:-.01em}
+.lane-head .ic{position:absolute;top:18px;right:16px;color:var(--slate-light);opacity:.5}
+.lane-head .ic svg{width:22px;height:22px}
+.lane-steps{padding:16px 18px 22px;display:flex;flex-direction:column;gap:0;flex:1}
+.lstep{position:relative;padding:11px 0 11px 26px;font-size:13.3px;color:var(--slate);line-height:1.45;font-weight:500}
+.lstep::before{content:"";position:absolute;left:6px;top:17px;width:9px;height:9px;border-radius:50%;background:#fff;border:2px solid var(--orange)}
+.lstep::after{content:"";position:absolute;left:10px;top:26px;bottom:-6px;width:2px;background:var(--line)}
+.lstep:last-child::after{display:none}
+.lane.accent .lane-head{background:var(--bg-navy-grad)}
+.lane.accent .lane-head .pill,.lane.accent .lane-head h4{color:#fff}
+.lane.accent .lane-head .pill .d{background:var(--orange)}
+.lane.accent .lane-head .ic{color:rgba(255,255,255,.4)}
+
+/* ---------- Role cards ---------- */
+.role{display:flex;gap:20px;align-items:flex-start;padding:26px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);transition:.35s}
+.role:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:#D7E0EC}
+.role .ic{width:52px;height:52px;border-radius:14px;background:var(--navy-800);color:#fff;display:grid;place-items:center;flex:0 0 auto}
+.role .ic svg{width:26px;height:26px}
+.role h3{font-size:17px;margin-bottom:5px}
+.role .tagline{font-size:12.5px;font-weight:600;color:var(--orange-600);text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px}
+.role p{font-size:14px;color:var(--slate);line-height:1.6}
+
+/* ---------- Criteria chips ---------- */
+.chips{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.chip{padding:24px;border:1px solid var(--line);border-radius:var(--radius);background:#fff;box-shadow:var(--shadow-sm);transition:.3s}
+.chip:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.chip .ic{width:44px;height:44px;border-radius:12px;background:var(--orange-soft);color:var(--orange-600);display:grid;place-items:center;margin-bottom:16px}
+.chip .ic svg{width:22px;height:22px}
+.chip h4{font-size:15.5px;font-weight:700;color:var(--navy-800);margin-bottom:7px;letter-spacing:-.01em}
+.chip p{font-size:13.5px;color:var(--slate);line-height:1.55}
+
+/* ---------- Workflow stepper ---------- */
+.wf{display:grid;gap:0}
+.wf-row{display:grid;grid-template-columns:auto 1fr;gap:26px;position:relative;padding-bottom:14px}
+.wf-rail{display:flex;flex-direction:column;align-items:center}
+.wf-rail .n{width:46px;height:46px;border-radius:13px;background:#fff;border:2px solid var(--navy-800);color:var(--navy-800);display:grid;place-items:center;font-weight:800;font-size:17px;flex:0 0 auto;transition:.3s;z-index:2}
+.wf-row:hover .wf-rail .n{background:var(--navy-800);color:#fff;transform:scale(1.06)}
+.wf-rail .line{width:2px;flex:1;background:var(--line);margin:6px 0}
+.wf-row:last-child .wf-rail .line{display:none}
+.wf-body{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px 26px;margin-bottom:18px;box-shadow:var(--shadow-sm);transition:.3s;flex:1}
+.wf-row:hover .wf-body{box-shadow:var(--shadow-md);border-color:#D7E0EC;transform:translateX(4px)}
+.wf-body h4{font-size:16px;font-weight:700;color:var(--navy-800);margin-bottom:8px}
+.wf-body .acts{color:var(--slate);font-size:14px;line-height:1.65}
+.wf-body .out{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:7px 14px;background:var(--orange-soft);color:var(--orange-600);border-radius:99px;font-size:12.5px;font-weight:600}
+.wf-body .out svg{width:14px;height:14px}
+
+/* tabs */
+.tabs{display:inline-flex;gap:6px;padding:6px;background:var(--bg-gray);border:1px solid var(--line);border-radius:99px;margin-bottom:40px;flex-wrap:wrap}
+.tab{padding:10px 22px;border-radius:99px;font-size:14px;font-weight:600;color:var(--slate);cursor:pointer;border:none;background:none;transition:.25s;display:inline-flex;align-items:center;gap:8px}
+.tab svg{width:16px;height:16px}
+.tab.active{background:var(--navy-800);color:#fff;box-shadow:var(--shadow-sm)}
+.tabpanel{display:none}
+.tabpanel.active{display:block;animation:fadein .5s ease}
+@keyframes fadein{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+/* ---------- KPI ---------- */
+.kpi-hero{background:var(--bg-navy-grad);border-radius:var(--radius-lg);padding:clamp(34px,5vw,52px);color:#fff;display:grid;grid-template-columns:1fr 1px 1fr;gap:clamp(30px,5vw,56px);align-items:center;box-shadow:var(--shadow-lg);position:relative;overflow:hidden;margin-bottom:30px}
+.kpi-hero .glow{position:absolute;width:380px;height:380px;background:var(--orange);filter:blur(120px);opacity:.2;left:-120px;bottom:-160px}
+.kpi-hero .big{font-size:clamp(3rem,6vw,4.4rem);font-weight:800;letter-spacing:-.04em;line-height:1;background:linear-gradient(100deg,#fff,#FFB877);-webkit-background-clip:text;background-clip:text;color:transparent}
+.kpi-hero .divider{background:rgba(255,255,255,.15);width:1px;height:100%}
+.kpi-hero h3{color:#fff;font-size:18px;margin-bottom:8px}
+.kpi-hero p{color:#A9BAD2;font-size:14.5px;position:relative;z-index:2}
+.kpi-hero .formula{display:inline-block;margin-top:14px;font-family:'Inter';font-size:13px;color:#CBD8EC;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);padding:8px 14px;border-radius:10px;font-weight:500}
+.kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.kpi-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow-sm);transition:.3s}
+.kpi-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.kpi-card .tag{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:99px;display:inline-block;margin-bottom:14px}
+.tag.grow{background:#EAF3FF;color:#2C5797}
+.tag.qual{background:#FFF3E9;color:var(--orange-600)}
+.tag.logi{background:#EFEAFB;color:#6B4FBF}
+.tag.cust{background:#E7F7EE;color:#1B9E5E}
+.kpi-card h4{font-size:15.5px;font-weight:700;color:var(--navy-800);margin-bottom:8px;letter-spacing:-.01em}
+.kpi-card p{font-size:13px;color:var(--slate);line-height:1.55}
+
+/* ---------- Stat callout (pilot lesson) ---------- */
+.lesson{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.lesson-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);padding:36px;box-shadow:var(--shadow-sm);position:relative;overflow:hidden}
+.lesson-card .num{font-size:clamp(3.2rem,7vw,4.6rem);font-weight:800;letter-spacing:-.05em;line-height:1;color:var(--navy-800)}
+.lesson-card .num em{font-style:normal;color:var(--orange)}
+.lesson-card .lbl{font-size:15px;font-weight:600;color:var(--navy-700);margin-top:10px}
+.lesson-card .desc{font-size:14px;color:var(--slate);margin-top:14px;line-height:1.6}
+.lesson-card .bar{height:8px;border-radius:99px;background:var(--bg-gray);margin-top:22px;overflow:hidden}
+.lesson-card .bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--orange),var(--orange-600));width:0;transition:width 1.4s cubic-bezier(.2,.7,.2,1)}
+
+/* ---------- Benchmark ---------- */
+.bench{display:grid;gap:16px}
+.bench-row{display:grid;grid-template-columns:144px 220px 1fr;gap:26px;padding:24px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);transition:.3s;align-items:start}
+.bench-row:hover{box-shadow:var(--shadow-md);border-color:#D7E0EC}
+.bench-viz{width:100%;height:108px;border-radius:13px;background:linear-gradient(135deg,#F3F7FC,#E9F1FA);display:grid;place-items:center;border:1px solid var(--line);position:relative;overflow:hidden}
+.bench-viz svg{width:88px;height:66px}
+.viz-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:2}
+.viz-img.miss{display:none}
+.bench-row .left .src{font-size:12px;font-weight:700;color:var(--orange-600);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px}
+.bench-row .left h4{font-size:16px;font-weight:700;color:var(--navy-800);line-height:1.3}
+.bench-row .right .obs{font-size:13.5px;color:var(--slate);line-height:1.6;margin-bottom:12px}
+.bench-row .right .take{display:flex;gap:11px;align-items:flex-start;font-size:14px;color:var(--ink);font-weight:500;line-height:1.55;padding:13px 16px;background:var(--bg-gray);border-radius:12px;border-left:3px solid var(--orange)}
+.bench-row .right .take svg{width:17px;height:17px;color:var(--orange-600);flex:0 0 auto;margin-top:2px}
+
+/* ---------- Kit options + cost ---------- */
+.kits{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-bottom:34px}
+.kit{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px;box-shadow:var(--shadow-sm);transition:.35s;position:relative;display:flex;flex-direction:column}
+.kit:hover{transform:translateY(-6px);box-shadow:var(--shadow-md)}
+.kit.featured{border-color:var(--orange);box-shadow:0 14px 40px rgba(244,124,32,.16)}
+.kit.featured::before{content:"ĐỀ XUẤT";position:absolute;top:-11px;left:26px;background:var(--orange);color:#fff;font-size:10.5px;font-weight:800;letter-spacing:.1em;padding:5px 12px;border-radius:99px;z-index:2}
+.kit-viz{height:158px;border-radius:13px;background:linear-gradient(135deg,#F3F7FC,#E9F1FA);display:grid;place-items:center;border:1px solid var(--line);margin-bottom:18px;position:relative;overflow:hidden}
+.kit-viz svg{width:160px;height:118px}
+.kit.featured .kit-viz{background:linear-gradient(135deg,#FFF3E9,#FFE2CC);border-color:#F8D2B4}
+.kit-viz.k03{background:#fff}
+.kit-viz.k03 svg{width:188px;height:140px}
+.kit-viz.k03 .viz-img{object-fit:contain;background:#fff;padding:5px}
+.kit-viz.k04{background:#fff}
+.kit-viz.k04 svg{width:130px;height:142px}
+.kit-viz.k04 .viz-img{object-fit:contain;background:#fff;padding:5px}
+.kit-viz.k01{background:#fff}
+.kit-viz.k01 svg{width:190px;height:140px}
+.kit-viz.k01 .viz-img{object-fit:contain;background:#fff;padding:5px}
+.kit-viz.k02{background:#fff}
+.kit-viz.k02 .viz-img{object-fit:contain;background:#fff;padding:5px}
+.kit .opt{font-size:12px;font-weight:700;color:var(--orange-600);letter-spacing:.05em}
+.kit h4{font-size:17px;font-weight:800;color:var(--navy-800);margin:8px 0 12px;letter-spacing:-.01em}
+.kit .price{font-size:clamp(1.6rem,3vw,2rem);font-weight:800;color:var(--navy-800);letter-spacing:-.03em}
+.kit .price small{font-size:13px;font-weight:500;color:var(--slate-light)}
+.kit .focus{margin-top:auto;padding-top:18px;font-size:13px;color:var(--slate);line-height:1.5;border-top:1px solid var(--line);margin-top:18px}
+.kit .focus b{color:var(--navy-700);font-weight:600}
+
+/* generic table */
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);background:#fff}
+table.pretty{width:100%;border-collapse:collapse;min-width:560px}
+table.pretty th{background:var(--navy-800);color:#fff;font-size:12.5px;font-weight:600;letter-spacing:.03em;text-align:left;padding:16px 20px;text-transform:uppercase}
+table.pretty th:first-child{border-top-left-radius:var(--radius)}
+table.pretty th:last-child{border-top-right-radius:var(--radius);text-align:right}
+table.pretty td{padding:15px 20px;font-size:14px;color:var(--ink);border-top:1px solid var(--line);vertical-align:top}
+table.pretty td.r{text-align:right;font-weight:700;color:var(--navy-800);white-space:nowrap}
+table.pretty tr:hover td{background:var(--bg-gray)}
+table.pretty tr.total td{background:var(--orange-soft);font-weight:800;color:var(--navy-800);border-top:2px solid var(--orange)}
+.okdot{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#E7F7EE;color:#1B9E5E;font-weight:800;font-size:13px;line-height:1}
+table.pretty td.pic{text-align:right;font-weight:700;color:var(--navy-700);white-space:nowrap;font-size:13px}
+table.pretty .muted{color:var(--slate);font-size:13px;line-height:1.95}
+table.pretty .muted .li{display:block;padding-left:15px;position:relative}
+table.pretty .muted .li::before{content:"";position:absolute;left:2px;top:9px;width:5px;height:5px;border-radius:50%;background:var(--orange)}
+
+/* recommendation cards */
+.reco{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:30px}
+.reco-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:30px;box-shadow:var(--shadow-sm);border-top:4px solid var(--navy-800)}
+.reco-card.alt{border-top-color:var(--orange)}
+.reco-card .sku{font-size:12px;font-weight:700;color:var(--slate-light);text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px}
+.reco-card h4{font-size:19px;font-weight:800;color:var(--navy-800);margin-bottom:12px;letter-spacing:-.01em}
+.reco-card p{font-size:14px;color:var(--slate);line-height:1.65}
+
+/* ---------- Priority matrix ---------- */
+.prio-legend{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:28px}
+.plg{display:inline-flex;align-items:center;gap:9px;font-size:13px;font-weight:600;color:var(--slate)}
+.plg .d{width:13px;height:13px;border-radius:4px}
+.d.p1{background:var(--orange)}.d.p2{background:var(--navy-500)}.d.p3{background:#B9C4D4}
+.prio-badge{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:7px;font-size:12px;font-weight:800;color:#fff}
+.prio-badge.p1{background:var(--orange)}.prio-badge.p2{background:var(--navy-500)}.prio-badge.p3{background:#B9C4D4}
+
+/* ---------- Lifecycle timeline ---------- */
+.lifecycle{display:flex;flex-wrap:wrap;gap:0;align-items:stretch;position:relative}
+.lc-step{flex:1 1 0;min-width:150px;position:relative;padding:0 8px}
+.lc-node{display:flex;flex-direction:column;align-items:center;text-align:center}
+.lc-dot{width:46px;height:46px;border-radius:14px;background:#fff;border:2px solid var(--navy-800);color:var(--navy-800);display:grid;place-items:center;font-weight:800;position:relative;z-index:2;transition:.3s}
+.lc-dot svg{width:22px;height:22px}
+.lc-step:hover .lc-dot{background:var(--navy-800);color:#fff;transform:translateY(-4px)}
+.lc-connector{position:absolute;top:23px;left:50%;width:100%;height:2px;background:var(--line);z-index:1}
+.lc-step:last-child .lc-connector{display:none}
+.lc-step h5{font-size:14px;font-weight:700;color:var(--navy-800);margin-top:16px}
+.lc-step .who{font-size:11.5px;font-weight:600;color:var(--orange-600);text-transform:uppercase;letter-spacing:.04em;margin-top:6px}
+.lc-step .note{font-size:12px;color:var(--slate);margin-top:8px;line-height:1.45}
+.lc-exception{margin-top:34px;display:flex;gap:16px;align-items:center;padding:20px 26px;background:#FFF6F4;border:1px solid #FAD9CF;border-radius:var(--radius)}
+.lc-exception .ic{width:44px;height:44px;border-radius:12px;background:#FCE4DC;color:#D94A2C;display:grid;place-items:center;flex:0 0 auto}
+.lc-exception h5{font-size:15px;font-weight:700;color:#B33A1F}
+.lc-exception p{font-size:13.5px;color:#7A4538;margin-top:3px}
+
+/* ---------- Roadmap phases ---------- */
+.phases{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.phase{background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-sm);transition:.35s;display:flex;flex-direction:column}
+.phase:hover{transform:translateY(-6px);box-shadow:var(--shadow-md)}
+.phase-head{padding:26px 28px;color:#fff;position:relative}
+.phase:nth-child(1) .phase-head{background:var(--bg-navy-grad)}
+.phase:nth-child(2) .phase-head{background:linear-gradient(135deg,#1A4178,#2C5797)}
+.phase:nth-child(3) .phase-head{background:linear-gradient(135deg,#5A6B82,#8493A8)}
+.phase-head .ph-tag{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;opacity:.8}
+.phase-head h3{color:#fff;font-size:22px;margin-top:8px;letter-spacing:-.02em}
+.phase-head .ph-sub{font-size:13px;opacity:.85;margin-top:6px}
+.phase-body{padding:24px 28px 30px;flex:1}
+.phase-body .feat{display:flex;gap:11px;align-items:flex-start;padding:11px 0;border-bottom:1px dashed var(--line);font-size:13.8px;color:var(--ink);font-weight:500}
+.phase-body .feat:last-child{border-bottom:none}
+.phase-body .feat svg{width:17px;height:17px;color:var(--orange-600);flex:0 0 auto;margin-top:2px}
+
+/* ---------- QA policies ---------- */
+.qa-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.qa-card{display:flex;gap:18px;padding:26px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);transition:.3s}
+.qa-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.qa-card .ic{width:48px;height:48px;border-radius:13px;background:var(--orange-soft);color:var(--orange-600);display:grid;place-items:center;flex:0 0 auto}
+.qa-card .ic svg{width:24px;height:24px}
+.qa-card h4{font-size:15.5px;font-weight:700;color:var(--navy-800);margin-bottom:7px;letter-spacing:-.01em}
+.qa-card p{font-size:13.5px;color:var(--slate);line-height:1.6}
+
+/* ---------- Logistics ---------- */
+.logi-flow{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center}
+.logi-times{display:flex;flex-direction:column;gap:18px}
+.logi-time{display:flex;align-items:center;gap:20px;padding:24px 28px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);transition:.3s}
+.logi-time:hover{transform:translateX(5px);box-shadow:var(--shadow-md)}
+.logi-time .clock{font-size:clamp(1.8rem,3vw,2.4rem);font-weight:800;color:var(--navy-800);letter-spacing:-.03em;min-width:115px}
+.logi-time .clock span{color:var(--orange)}
+.logi-time .lab{font-size:14px;color:var(--slate)}
+.logi-time .lab b{display:block;color:var(--navy-800);font-size:15px;font-weight:700;margin-bottom:3px}
+.handover{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:8px}
+.hnode{padding:14px 22px;background:#fff;border:1px solid var(--line);border-radius:12px;font-weight:700;font-size:14px;color:var(--navy-800);box-shadow:var(--shadow-sm)}
+.harrow{color:var(--orange);font-weight:800;font-size:20px}
+.logi-points{display:grid;gap:14px;margin-top:30px}
+.lpoint{display:flex;gap:14px;align-items:flex-start;font-size:14.5px;color:var(--ink);line-height:1.6}
+.lpoint .ic{width:38px;height:38px;border-radius:11px;background:var(--navy-800);color:#fff;display:grid;place-items:center;flex:0 0 auto}
+.lpoint .ic svg{width:19px;height:19px}
+.lpoint b{color:var(--navy-800)}
+
+/* ---------- Facility checklist ---------- */
+.facility{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.fac{display:flex;gap:14px;align-items:center;padding:22px 24px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);transition:.3s}
+.fac:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:#CFE7D8}
+.fac .check{width:34px;height:34px;border-radius:50%;background:#E7F7EE;color:#1B9E5E;display:grid;place-items:center;flex:0 0 auto}
+.fac .check svg{width:19px;height:19px}
+.fac span{font-size:14.5px;font-weight:600;color:var(--navy-800);line-height:1.4}
+.fac small{display:block;font-weight:400;color:var(--slate-light);font-size:12px;margin-top:2px}
+
+/* ---------- Closing ---------- */
+.closing{text-align:center;max-width:780px;margin:0 auto}
+.closing h2{margin-bottom:24px}
+.closing .lead{margin:0 auto 40px}
+.closing-stats{display:flex;justify-content:center;flex-wrap:wrap;gap:clamp(30px,6vw,70px);margin-top:56px;padding-top:44px;border-top:1px solid rgba(255,255,255,.12)}
+.closing-stats .v{font-size:clamp(2rem,4vw,2.7rem);font-weight:800;color:#fff;letter-spacing:-.03em}
+.closing-stats .v em{color:var(--orange);font-style:normal}
+.closing-stats .l{font-size:13px;color:#9FB2CC;margin-top:8px}
+
+/* ---------- Footer ---------- */
+footer{background:var(--navy-900);color:#8FA3C0;padding:50px 0;font-size:13px}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px}
+footer .brand{color:#fff}
+footer .brand small{color:#7E93B0}
+
+/* ---------- Responsive ---------- */
+@media(max-width:1080px){
+  .flow{grid-template-columns:repeat(2,1fr)}
+  .lifecycle{flex-direction:column;gap:8px}
+  .lc-step{display:flex;gap:18px;text-align:left;min-width:0;padding:0}
+  .lc-node{flex-direction:row;align-items:flex-start}
+  .lc-connector{display:none}
+  .lc-step h5,.lc-step .who,.lc-step .note{text-align:left;margin-top:0}
+  .lc-step .lc-node{flex-direction:row;gap:16px}
+  .lc-text{padding-bottom:20px}
+}
+@media(max-width:900px){
+  .navlinks{display:none}
+  .menu-btn{display:flex}
+  .g4,.kits{grid-template-columns:repeat(2,1fr)}
+  .kpi-grid,.chips,.facility,.phases{grid-template-columns:repeat(2,1fr)}
+  .kpi-hero{grid-template-columns:1fr;gap:24px}
+  .kpi-hero .divider{display:none}
+  .transition{grid-template-columns:1fr;gap:22px;text-align:center}
+  .transition .arrow{transform:rotate(90deg);margin:0 auto}
+  .logi-flow{grid-template-columns:1fr;gap:30px}
+  .bench-row{grid-template-columns:1fr;gap:14px}
+}
+@media(max-width:620px){
+  .g2,.g3,.g4,.kits,.kpi-grid,.chips,.facility,.phases,.lesson,.reco,.qa-grid{grid-template-columns:1fr}
+  .flow{grid-template-columns:1fr}
+  .hero-stats{gap:26px}
+  .wf-row{grid-template-columns:auto 1fr;gap:16px}
+}
+
+/* mobile menu */
+.mobile-menu{position:fixed;inset:0;background:var(--bg-navy-grad);z-index:160;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:8px;transform:translateY(-100%);transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+.mobile-menu.open{transform:none}
+.mobile-menu a{color:#cbd8ec;font-size:20px;font-weight:600;padding:12px}
+.mobile-menu .close{position:absolute;top:24px;right:28px;color:#fff;font-size:30px;background:none;border:none;cursor:pointer}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<nav id="nav">
+  <a href="#top" class="brand">
+    <img class="brand-logo" src="../asset/logo-xet-nghiem-long-chau.png" alt="Xét nghiệm Long Châu — FPT Retail" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <span class="brandtext" style="display:none">XÉT NGHIỆM LONG CHÂU<small>FPT Retail · Diagnostics</small></span>
+  </a>
+  <div class="navlinks">
+    <a href="#summary">Tổng quan</a>
+    <a href="#model">Mô hình</a>
+    <a href="#workflow">Vận hành</a>
+    <a href="#kit">Sản phẩm</a>
+    <a href="#system">Hệ thống</a>
+    <a href="#qa">QA & Logistics</a>
+    <a href="#close" class="cta">Kết luận</a>
+  </div>
+  <button class="menu-btn" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="close" id="closeMenu">&times;</button>
+  <a href="#summary">Tổng quan</a>
+  <a href="#model">Mô hình vận hành</a>
+  <a href="#workflow">Thiết kế vận hành</a>
+  <a href="#kit">Sản phẩm</a>
+  <a href="#system">Dữ liệu & Hệ thống</a>
+  <a href="#qa">QA & Logistics</a>
+  <a href="#close">Kết luận</a>
+</div>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow o"></div>
+  <div class="hero-glow b"></div>
+  <div class="wrap">
+    <div class="hero-tag reveal"><span class="dot"></span>Roadmap Thương mại hóa · Giai đoạn Scale-up</div>
+    <h1 class="reveal d1">Đưa xét nghiệm<br><span class="grad">về gần dân nhất</span><br>qua mạng lưới nhà thuốc</h1>
+    <p class="hero-sub reveal d2">Mô hình thu nhận mẫu nước tiểu tại nhà thuốc — chuyển từ Pilot đã được kiểm chứng sang vận hành System-first, sẵn sàng mở rộng trên toàn hệ thống Long Châu.</p>
+    <div class="hero-aim reveal d2">Cùng nhau hướng đến</div>
+    <div class="hero-stats">
+      <div class="hero-stat reveal d3"><div class="v">500<em>+</em></div><div class="l">Nhà thuốc triển khai</div></div>
+      <div class="hero-stat reveal d4"><div class="v">90<em>%+</em></div><div class="l">Tỷ lệ hoàn thành hành trình</div></div>
+      <div class="hero-stat reveal d5"><div class="v">0</div><div class="l">Ca không đảm bảo chất lượng mẫu</div></div>
+    </div>
+  </div>
+  <div class="scroll-cue"><div class="mouse"></div><span>Cuộn</span></div>
+</header>
+
+<!-- ============ PART 1: EXECUTIVE SUMMARY ============ -->
+<section id="summary">
+  <div class="wrap">
+    <div class="shead">
+      <div class="eyebrow reveal">Phần 01 — Executive Summary</div>
+      <h2 class="reveal d1">Pilot đã trả lời câu hỏi <em style="color:var(--orange);font-style:normal">"liệu có khả thi?"</em></h2>
+      <p class="lead reveal d2">Xét nghiệm hiện vẫn chủ yếu thực hiện tại bệnh viện hoặc điểm lấy mẫu chuyên biệt. Nhưng nhiều xét nghiệm nước tiểu không cần nhân viên y tế lấy mẫu — và có thể tự thực hiện tại nhà. Đây chính là khoảng trống mà mạng lưới nhà thuốc Long Châu có thể lấp đầy.</p>
+    </div>
+
+    <div class="grid g2" style="margin-bottom:60px">
+      <div class="card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-3"/><path d="M9 9v.01M9 12v.01M9 15v.01M9 18v.01"/></svg></div>
+        <h3>Thực trạng</h3>
+        <p>Xét nghiệm còn phụ thuộc vào bệnh viện và điểm lấy mẫu chuyên biệt, tạo rào cản về khoảng cách và thời gian. Trong khi đó, nhiều xét nghiệm nước tiểu hoàn toàn có thể tự lấy mẫu tại nhà mà không cần nhân viên y tế.</p>
+      </div>
+      <div class="card reveal d1">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v4M12 18v4M2 12h4M18 12h4M5 5l2.5 2.5M16.5 16.5L19 19M19 5l-2.5 2.5M7.5 16.5L5 19"/><circle cx="12" cy="12" r="3.5"/></svg></div>
+        <h3>Cơ hội của Long Châu</h3>
+        <p>Sở hữu mạng lưới hơn <b style="color:var(--navy-800)">2.678 nhà thuốc</b> trên toàn quốc — Long Châu có khả năng trở thành điểm tiếp cận xét nghiệm gần dân và thuận tiện nhất Việt Nam.</p>
+      </div>
+    </div>
+
+    <div class="reveal" style="margin-bottom:30px">
+      <div class="eyebrow">Pilot đã kiểm chứng</div>
+      <h3 style="font-size:clamp(1.4rem,2.5vw,1.9rem);margin-bottom:8px">5 giả thuyết then chốt đã được xác nhận</h3>
+    </div>
+    <div class="proof">
+      <div class="proof-item reveal"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><p>Khách hàng sẵn sàng <b>mua xét nghiệm tại nhà thuốc</b>.</p></div>
+      <div class="proof-item reveal d1"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><p>Khách hàng sẵn sàng <b>tự lấy mẫu tại nhà</b>.</p></div>
+      <div class="proof-item reveal d2"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><p>Khách hàng sẵn sàng <b>quay lại nộp mẫu</b>.</p></div>
+      <div class="proof-item reveal d3"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><p>Dược sĩ nhà thuốc <b>có thể tham gia quy trình bán và thu nhận mẫu</b>.</p></div>
+      <div class="proof-item reveal d4"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><p>Logistic vận hành tốt — <b>chưa ghi nhận bất kỳ ca nào</b> liên quan đến không đảm bảo chất lượng mẫu.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Transition banner -->
+<section class="section-gray" style="padding-top:0;padding-bottom:clamp(80px,11vw,140px)">
+  <div class="wrap">
+    <div class="transition reveal">
+      <div class="glow"></div>
+      <div class="q past">
+        <div class="qlabel">Pilot đã trả lời</div>
+        <p>"Mô hình có khả thi hay không?"</p>
+      </div>
+      <div class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      <div class="q">
+        <div class="qlabel">Giai đoạn tiếp theo phải trả lời</div>
+        <p>"Mô hình sẽ vận hành &amp; mở rộng như thế nào?"</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PART 2: OPERATING MODEL ============ -->
+<section id="model">
+  <div class="wrap">
+    <div class="shead">
+      <div class="eyebrow reveal">Phần 02 — Mô hình vận hành tổng thể</div>
+      <h2 class="reveal d1">Thiết kế theo nguyên tắc <em style="color:var(--orange);font-style:normal">System-first</em></h2>
+      <p class="lead reveal d2">Khác với Pilot, mô hình Scale-up để hệ thống đảm nhiệm các nghiệp vụ trung gian — TTXN không còn tham gia quy trình. Qua đó giảm số bước vận hành, giảm điểm bàn giao và tăng khả năng mở rộng.</p>
+    </div>
+
+    <div class="eyebrow reveal" style="margin-bottom:24px">2.1 — End-to-End Operating Model</div>
+    <div class="flow">
+      <div class="lane accent reveal">
+        <div class="lane-head"><div class="pill"><span class="d"></span>Khách hàng</div><h4>Mua &amp; tự lấy mẫu</h4>
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div></div>
+        <div class="lane-steps">
+          <div class="lstep">Được dược sĩ tư vấn</div>
+          <div class="lstep">Mua bộ kit</div>
+          <div class="lstep">Tạo đơn trên hệ thống &amp; in Barcode</div>
+          <div class="lstep">Tự lấy mẫu tại nhà</div>
+        </div>
+      </div>
+      <div class="lane reveal d1">
+        <div class="lane-head"><div class="pill"><span class="d"></span>Nhà thuốc Long Châu</div><h4>Tiếp nhận mẫu</h4>
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 21h18M5 21V8l7-5 7 5v13"/><rect x="9" y="13" width="6" height="8"/></svg></div></div>
+        <div class="lane-steps">
+          <div class="lstep">Khách hàng nộp mẫu</div>
+          <div class="lstep">Dược sĩ đối chiếu đơn hàng</div>
+          <div class="lstep">Kiểm tra điều kiện tiếp nhận</div>
+          <div class="lstep">Xác nhận nhận mẫu trên hệ thống</div>
+          <div class="lstep">Bảo quản mẫu</div>
+        </div>
+      </div>
+      <div class="lane reveal d2">
+        <div class="lane-head"><div class="pill"><span class="d"></span>Logistics</div><h4>Thu gom &amp; vận chuyển</h4>
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M1 3h15v13H1zM16 8h4l3 3v5h-7"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div></div>
+        <div class="lane-steps">
+          <div class="lstep">Thu gom mẫu tại nhà thuốc</div>
+          <div class="lstep">Kiểm đếm &amp; ký biên bản bàn giao</div>
+          <div class="lstep">Vận chuyển trực tiếp đến Labhouse</div>
+        </div>
+      </div>
+      <div class="lane reveal d3">
+        <div class="lane-head"><div class="pill"><span class="d"></span>Labhouse</div><h4>Xét nghiệm</h4>
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M9 3v6l-5 9a2 2 0 0 0 2 3h12a2 2 0 0 0 2-3l-5-9V3M8 3h8M7 15h10"/></svg></div></div>
+        <div class="lane-steps">
+          <div class="lstep">Tiếp nhận mẫu</div>
+          <div class="lstep">Đối soát mẫu &amp; đơn xét nghiệm</div>
+          <div class="lstep">Thực hiện xét nghiệm</div>
+          <div class="lstep">Kiểm soát chất lượng</div>
+          <div class="lstep">Phát hành &amp; đồng bộ kết quả</div>
+        </div>
+      </div>
+      <div class="lane reveal d4">
+        <div class="lane-head"><div class="pill"><span class="d"></span>Hậu xét nghiệm</div><h4>Tư vấn kết quả</h4>
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 11.5a8.5 8.5 0 0 1-12.5 7.5L3 21l2-5.5A8.5 8.5 0 1 1 21 11.5z"/></svg></div></div>
+        <div class="lane-steps">
+          <div class="lstep">Khách hàng nhận kết quả</div>
+          <div class="lstep">Bác sĩ Long Châu tư vấn nếu có bất thường</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Roles -->
+<section class="section-gray">
+  <div class="wrap">
+    <div class="shead">
+      <div class="eyebrow reveal">2.2 — Vai trò của từng bên</div>
+      <h2 class="reveal d1">Năm mắt xích, một chuỗi liền mạch</h2>
+    </div>
+    <div class="grid g2">
+      <div class="role reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div><div><h3>Khách hàng</h3><div class="tagline">Chủ động thực hiện xét nghiệm</div><p>Mua bộ kit, tự lấy mẫu theo hướng dẫn và nộp mẫu trong thời gian quy định.</p></div></div>
+      <div class="role reveal d1"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 21h18M5 21V8l7-5 7 5v13"/><rect x="9" y="13" width="6" height="8"/></svg></div><div><h3>Nhà thuốc Long Châu</h3><div class="tagline">Điểm bán &amp; tiếp nhận mẫu</div><p>Tư vấn, bán bộ kit, tạo đơn, in Barcode định danh, tiếp nhận &amp; kiểm tra điều kiện mẫu, xác nhận và bảo quản tạm thời.</p></div></div>
+      <div class="role reveal d2"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M1 3h15v13H1zM16 8h4l3 3v5h-7"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div><div><h3>Đội Logistics Long Châu</h3><div class="tagline">Vận chuyển mẫu</div><p>Thu gom mẫu từ nhà thuốc, quản lý chuỗi bàn giao (Chain of Custody), đảm bảo điều kiện bảo quản đến Labhouse.</p></div></div>
+      <div class="role reveal d3"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M9 3v6l-5 9a2 2 0 0 0 2 3h12a2 2 0 0 0 2-3l-5-9V3M8 3h8"/></svg></div><div><h3>Labhouse</h3><div class="tagline">Đơn vị thực hiện xét nghiệm</div><p>Tiếp nhận mẫu, đối soát thông tin đơn hàng, thực hiện xét nghiệm, kiểm soát chất lượng và phát hành kết quả.</p></div></div>
+      <div class="role reveal d4" style="grid-column:1/-1;max-width:calc(50% - 11px)"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 11.5a8.5 8.5 0 0 1-12.5 7.5L3 21l2-5.5A8.5 8.5 0 1 1 21 11.5z"/><path d="M8 12h.01M12 12h.01M16 12h.01"/></svg></div><div><h3>Bác sĩ Xét nghiệm Long Châu</h3><div class="tagline">Hậu xét nghiệm</div><p>Tư vấn kết quả khi có chỉ số bất thường, hỗ trợ định hướng theo dõi hoặc thực hiện các xét nghiệm tiếp theo.</p></div></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ PART 3: OPERATIONAL DESIGN / WORKFLOWS ============ -->
+<section id="workflow">
+  <div class="wrap">
+    <div class="shead">
+      <div class="eyebrow reveal">Phần 03 — Thiết kế vận hành</div>
+      <h2 class="reveal d1">Ba luồng công việc, một dòng chảy thống nhất</h2>
+      <p class="lead reveal d2">Mỗi tác nhân có một quy trình chuẩn hóa với đầu ra (output) rõ ràng tại từng bước — nền tảng để vận hành nhất quán khi mở rộng quy mô.</p>
+    </div>
+
+    <div class="tabs reveal">
+      <button class="tab active" data-tab="cust"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>Customer Journey</button>
+      <button class="tab" data-tab="pharm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M5 21V8l7-5 7 5v13"/></svg>Nhà thuốc</button>
+      <button class="tab" data-tab="logi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 3h15v13H1zM16 8h4l3 3v5h-7"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>Logistics</button>
+    </div>
+
+    <!-- Customer -->
+    <div class="tabpanel active" id="cust">
+      <div class="wf">
+        <div class="wf-row"><div class="wf-rail"><div class="n">1</div><div class="line"></div></div><div class="wf-body"><h4>Tư vấn &amp; Đăng ký dịch vụ</h4><div class="acts">Được dược sĩ tư vấn xét nghiệm phù hợp và đăng ký dịch vụ.</div><span class="out"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Đơn dịch vụ được tạo &amp; bộ kit được bàn giao</span></div></div>
+        <div class="wf-row"><div class="wf-rail"><div class="n">2</div><div class="line"></div></div><div class="wf-body"><h4>Nhận bộ kit</h4><div class="acts">Nhận bộ kit và được hướng dẫn cách lấy mẫu, thời hạn nộp mẫu.</div><span class="out"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Khách hàng hiểu đúng quy trình lấy mẫu</span></div></div>
+        <div class="wf-row"><div class="wf-rail"><div class="n">3</div><div class="line"></div></div><div class="wf-body"><h4>Tự thu mẫu tại nhà</h4><div class="acts">Thu mẫu theo hướng dẫn và đóng kín bộ kit.</div><span class="out"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Mẫu hoàn tất, sẵn sàng nộp</span></div></div>
+        <div class="wf-row"><div class="wf-rail"><div class="n">4</div><div class="line"></div></div><div class="wf-body"><h4>Nộp mẫu tại nhà thuốc</h4><div class="acts">Mang mẫu quay lại trong thời gian quy định.</div><span class="out"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Mẫu được tiếp nhận để đánh giá</span></div></div>
+        <div class="wf-row"><div class="wf-rail"><div class="n">5</div><div class="line"></div></div><div class="wf-body"><h4>Kiểm tra tính hợp lệ của mẫu</h4><div class="acts">Mẫu được đánh giá điều kiện tiếp nhận.</div><span class="out"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Mẫu được chấp nhận hoặc từ chối</span></div></div>
+        <div class="wf-row"><div class="wf-rail"><div class="n">6</div><div class="line"></div></div><div class="wf-body"><h4>Xét nghiệm</h4><div class="acts">Mẫu được vận chuyển đến Labhouse để thực hiện xét nghiệm.</div><span class="out"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Hoàn thành xét nghiệm</span></div></div>
+        <div class="wf-row"><div class="wf-rail"><div class="n">7</div></div><div class="wf-body"><h4>Nhận kết quả &amp; Tư vấn</h4><div class="acts">Khách hàng nhận kết quả và được bác sĩ tư vấn khi có kết quả bất thường.</div><span class="out"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Hoàn tất dịch vụ</span></div></div>
+      </div>
+    </div>
+
+    <!-- Pharmacy -->
+    <div class="tabpanel" id="pharm">
+      <div class="wf">
+        <div class="wf-row"><div class="wf-rail"><div class="n">1</div><div class="line"></div></div><div class="wf-body"><h4>Tư vấn &amp; Bán dịch vụ</h4><div class="acts">Tư vấn gói xét nghiệm phù hợp · Thu thập thông tin khách hàng · Tạo đơn dịch vụ trên hệ thống · In Barcode định danh mẫu · Bàn giao bộ kit và hướng dẫn lấy mẫu.</div><span class="out"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Đơn được tạo, Barcode sinh, bộ kit bàn giao</span></div></div>
+        <div class="wf-row"><div class="wf-rail"><div class="n">2</div><div class="line"></div></div><div class="wf-body"><h4>Tiếp nhận &amp; Đánh giá mẫu</h4><div class="acts">Đối chiếu khách hàng với đơn dịch vụ · Tiếp nhận mẫu · <b style="color:var(--orange-600)">Ghi nhận thời gian lấy mẫu do khách hàng cung cấp</b> · Đánh giá điều kiện tiếp nhận theo tiêu chí quy định · Xác nhận nhận mẫu trên hệ thống đối với mẫu đạt yêu cầu.</div><span class="out"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Mẫu được Accepted hoặc Rejected</span></div></div>
+        <div class="wf-row"><div class="wf-rail"><div class="n">3</div><div class="line"></div></div><div class="wf-body"><h4>Bảo quản mẫu</h4><div class="acts">Lưu mẫu tại khu vực bảo quản theo quy định · Theo dõi danh sách mẫu chờ thu gom trên hệ thống.</div><span class="out"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Mẫu sẵn sàng bàn giao cho Logistics</span></div></div>
+        <div class="wf-row"><div class="wf-rail"><div class="n">4</div></div><div class="wf-body"><h4>Bàn giao Logistics</h4><div class="acts">Kiểm đếm số lượng mẫu · Đối chiếu với danh sách trên hệ thống · Bàn giao mẫu và ký xác nhận với Logistics · Cập nhật trạng thái bàn giao.</div><span class="out"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Trách nhiệm bảo quản chuyển cho Logistics</span></div></div>
+      </div>
+    </div>
+
+    <!-- Logistics -->
+    <div class="tabpanel" id="logi">
+      <div class="wf">
+        <div class="wf-row"><div class="wf-rail"><div class="n">1</div><div class="line"></div></div><div class="wf-body"><h4>Nhận kế hoạch thu gom</h4><div class="acts">Nhận danh sách nhà thuốc có mẫu chờ thu gom · Thực hiện thu gom theo 2 khung giờ cố định trong ngày · Chuẩn bị phương tiện và vật tư vận chuyển.</div><span class="out"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Logistics sẵn sàng thực hiện thu gom</span></div></div>
+        <div class="wf-row"><div class="wf-rail"><div class="n">2</div><div class="line"></div></div><div class="wf-body"><h4>Thu gom mẫu tại nhà thuốc</h4><div class="acts">Tiếp nhận mẫu từ dược sĩ · Kiểm đếm số lượng mẫu thực tế · Đối chiếu với danh sách bàn giao · Ký xác nhận bàn giao mẫu.</div><span class="out"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Trách nhiệm bảo quản chuyển cho Logistics</span></div></div>
+        <div class="wf-row"><div class="wf-rail"><div class="n">3</div><div class="line"></div></div><div class="wf-body"><h4>Vận chuyển mẫu</h4><div class="acts">Vận chuyển mẫu theo tuyến cố định · Đảm bảo điều kiện bảo quản trong suốt quá trình · Theo dõi tiến độ giao nhận.</div><span class="out"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Mẫu được vận chuyển an toàn đến Labhouse</span></div></div>
+        <div class="wf-row"><div class="wf-rail"><div class="n">4</div></div><div class="wf-body"><h4>Bàn giao cho Labhouse</h4><div class="acts">Kiểm đếm số lượng mẫu · Đối chiếu danh sách bàn giao · Ký xác nhận bàn giao với Labhouse · Cập nhật trạng thái hoàn tất giao nhận.</div><span class="out"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Trách nhiệm xử lý mẫu chuyển cho Labhouse</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KPI -->
+<section class="section-navy" id="kpi">
+  <div class="wrap">
+    <div class="shead">
+      <div class="eyebrow reveal">3.4 — KPI vận hành</div>
+      <h2 class="reveal d1">Một chỉ số trọng tâm. Sáu chỉ số hỗ trợ.</h2>
+    </div>
+    <div class="kpi-hero reveal">
+      <div class="glow"></div>
+      <div style="position:relative;z-index:2">
+        <div style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#FFB877;margin-bottom:14px">KPI Trọng tâm</div>
+        <div class="big">Completion<br>Rate</div>
+      </div>
+      <div class="divider"></div>
+      <div style="position:relative;z-index:2">
+        <h3>Tỷ lệ hoàn thành dịch vụ</h3>
+        <p>Đo lường mức độ thành công của toàn bộ mô hình — tỷ lệ khách hàng thực sự quay lại nộp mẫu trên số bộ kit đã bán.</p>
+        <div class="formula">Số khách hàng nộp mẫu ÷ Số bộ kit đã bán</div>
+      </div>
+    </div>
+    <div class="kpi-grid">
+      <div class="kpi-card reveal"><span class="tag grow">Tăng trưởng</span><h4>Số bộ kit bán ra</h4><p>Tổng số bộ kit đã bán.</p></div>
+      <div class="kpi-card reveal d1"><span class="tag grow">Tăng trưởng</span><h4>Doanh thu xét nghiệm</h4><p>Tổng doanh thu từ bộ kit.</p></div>
+      <div class="kpi-card reveal d2"><span class="tag qual">Chất lượng</span><h4>Tỷ lệ mẫu bị từ chối</h4><p>Số mẫu bị từ chối ÷ Tổng số mẫu nộp.</p></div>
+      <div class="kpi-card reveal d3"><span class="tag logi">Logistics</span><h4>Tỷ lệ thất lạc mẫu</h4><p>Số mẫu thất lạc ÷ Tổng số mẫu thu gom.</p></div>
+      <div class="kpi-card reveal d4"><span class="tag logi">Logistics</span><h4>Bàn giao đúng thời gian</h4><p>Số chuyến đúng SLA ÷ Tổng số chuyến bàn giao.</p></div>
+      <div class="kpi-card reveal d5"><span class="tag cust">Khách hàng</span><h4>Chưa nộp mẫu sau 10 ngày</h4><p>Số khách chưa nộp &gt; 10 ngày ÷ Tổng số bộ kit đã bán.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PART 4: KIT DESIGN ============ -->
+<section id="kit">
+  <div class="wrap">
+    <div class="shead">
+      <div class="eyebrow reveal">Phần 04 — Thiết kế sản phẩm</div>
+      <h2 class="reveal d1">Từ bộ kit Pilot đến sản phẩm thương mại</h2>
+      <p class="lead reveal d2">Bộ kit Pilot (túi ZIP, găng tay, phiếu hướng dẫn, lọ 60ml) đủ để kiểm chứng mô hình — nhưng chưa sẵn sàng cho thương mại hóa và mở rộng quy mô.</p>
+    </div>
+
+    <div class="lesson" style="margin-bottom:64px">
+      <div class="lesson-card reveal">
+        <div class="num">79,3<em>%</em></div>
+        <div class="lbl">Tỷ lệ hoàn thành hành trình trong Pilot</div>
+        <div class="desc">111 khách mua bộ kit — chỉ 88 khách quay lại nộp mẫu. Bộ kit cần hỗ trợ khách hàng nộp mẫu ngay sau khi lấy.</div>
+        <div class="bar"><i data-w="79"></i></div>
+      </div>
+      <div class="lesson-card reveal d1">
+        <div class="num">66,2<em>%</em></div>
+        <div class="lbl">Khách hàng thuộc nhóm 50+</div>
+        <div class="desc">Bộ kit cần đơn giản, trực quan và dễ sử dụng cho nhóm khách hàng lớn tuổi — yếu tố quyết định tỷ lệ hoàn thành.</div>
+        <div class="bar"><i data-w="66"></i></div>
+      </div>
+    </div>
+
+    <div class="reveal" style="margin-bottom:28px">
+      <div class="eyebrow">4.2.1 — Tiêu chí thiết kế bộ Kit tự lấy mẫu</div>
+      <h3 style="font-size:clamp(1.3rem,2.5vw,1.7rem)">Năm tiêu chí thiết kế bắt buộc</h3>
+    </div>
+    <div class="grid g3" style="margin-bottom:80px">
+      <div class="card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg></div><h3 style="font-size:16px">Tăng tỷ lệ hoàn thành</h3><p>Thiết kế thúc đẩy khách nộp mẫu ngay sau khi lấy.</p></div>
+      <div class="card reveal d1"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg></div><h3 style="font-size:16px">Dễ dùng cho nhóm 50+</h3><p>Đơn giản, trực quan, hạn chế thao tác phức tạp.</p></div>
+      <div class="card reveal d2"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3 style="font-size:16px">An toàn sinh học</h3><p>Chống rò rỉ và nhiễm bẩn trong suốt hành trình mẫu.</p></div>
+      <div class="card reveal d1"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 5v14M11 5v14M14 5v14M18 5v14"/></svg></div><h3 style="font-size:16px">Định danh &amp; truy xuất</h3><p>Tích hợp barcode hỗ trợ định danh và truy xuất mẫu.</p></div>
+      <div class="card reveal d2"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><h3 style="font-size:16px">Tối ưu chi phí</h3><p>Phù hợp các xét nghiệm phổ thông &lt; 100.000 VNĐ.</p></div>
+    </div>
+
+    <!-- Benchmark -->
+    <div class="reveal" style="margin-bottom:28px">
+      <div class="eyebrow">4.2.2 — Bài học từ các mô hình dẫn đầu</div>
+      <h3 style="font-size:clamp(1.3rem,2.5vw,1.7rem)">Học từ Everlywell, LetsGetChecked, Quest, Labcorp</h3>
+    </div>
+    <div class="bench" style="margin-bottom:80px">
+      <div class="bench-row reveal"><div class="bench-viz"><img class="viz-img" src="../asset/4.2.2.1.jpg" alt="Bộ kit thương hiệu hoàn chỉnh" onerror="this.classList.add('miss')"><svg viewBox="0 0 120 90" fill="none"><path d="M30 32 L60 22 L90 32 L60 42 Z" fill="#DCE6F5" stroke="#16318F" stroke-width="2.5" stroke-linejoin="round"/><path d="M30 32 V66 L60 76 V42 Z" fill="#16318F"/><path d="M90 32 V66 L60 76 V42 Z" fill="#2C5797"/><rect x="37" y="50" width="20" height="6" rx="2" fill="#F47C20"/><rect x="37" y="60" width="13" height="4" rx="2" fill="#5E7CA8"/></svg></div><div class="left"><div class="src">Everlywell · LetsGetChecked</div><h4>Biến bộ kit thành sản phẩm hoàn chỉnh</h4></div><div class="right"><div class="obs">Bộ kit được đóng gói trong hộp carton có nhận diện thương hiệu thay vì chỉ cung cấp vật tư xét nghiệm.</div><div class="take"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg><span>Bộ kit cần hộp carton riêng để tăng cảm nhận chuyên nghiệp, bảo vệ thương hiệu và tạo không gian truyền tải hướng dẫn.</span></div></div></div>
+      <div class="bench-row reveal d1"><div class="bench-viz"><img class="viz-img" src="../asset/4.2.2.2.jpg" alt="Hướng dẫn sử dụng QR và video" onerror="this.classList.add('miss')"><svg viewBox="0 0 120 90" fill="none"><rect x="28" y="24" width="34" height="34" rx="4" fill="#fff" stroke="#16318F" stroke-width="2.5"/><rect x="34" y="30" width="9" height="9" fill="#16318F"/><rect x="48" y="30" width="9" height="9" fill="#16318F"/><rect x="34" y="44" width="9" height="9" fill="#16318F"/><rect x="49" y="46" width="6" height="6" fill="#F47C20"/><circle cx="84" cy="48" r="16" fill="#F47C20"/><path d="M80 41 L92 48 L80 55 Z" fill="#fff"/></svg></div><div class="left"><div class="src">Everlywell · Healthy.io</div><h4>Hướng dẫn sử dụng trực quan</h4></div><div class="right"><div class="obs">Sử dụng QR và video hướng dẫn thay cho tài liệu dài.</div><div class="take"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg><span>Cần HDSD trực quan cho nhóm 50+, kèm QR/video hướng dẫn (nice-to-have).</span></div></div></div>
+      <div class="bench-row reveal d2"><div class="bench-viz"><img class="viz-img" src="../asset/4.2.2.3.jpg" alt="Card ghi ngày giờ và checklist" onerror="this.classList.add('miss')"><svg viewBox="0 0 120 90" fill="none"><rect x="34" y="20" width="52" height="50" rx="5" fill="#fff" stroke="#16318F" stroke-width="2.5"/><rect x="34" y="20" width="52" height="14" rx="5" fill="#16318F"/><rect x="42" y="44" width="7" height="7" rx="1.5" fill="#F47C20"/><rect x="53" y="45" width="26" height="4" rx="2" fill="#C7D4E6"/><rect x="42" y="56" width="7" height="7" rx="1.5" fill="#F47C20"/><rect x="53" y="57" width="19" height="4" rx="2" fill="#C7D4E6"/></svg></div><div class="left"><div class="src">Everlywell</div><h4>Công cụ hỗ trợ hành vi</h4></div><div class="right"><div class="obs">Bổ sung card ghi ngày giờ lấy mẫu và checklist hoàn thành.</div><div class="take"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg><span>Khác bộ kit quốc tế thiết kế cho vận chuyển đường dài — Long Châu chưa cần trong giai đoạn đầu.</span></div></div></div>
+      <div class="bench-row reveal"><div class="bench-viz"><img class="viz-img" src="../asset/4.2.2.4.jpg" alt="Mã barcode định danh mẫu" onerror="this.classList.add('miss')"><svg viewBox="0 0 120 90" fill="none"><rect x="30" y="28" width="60" height="38" rx="5" fill="#fff" stroke="#16318F" stroke-width="2.5"/><g fill="#16318F"><rect x="39" y="36" width="3.5" height="22"/><rect x="46" y="36" width="2" height="22"/><rect x="51" y="36" width="4.5" height="22"/><rect x="59" y="36" width="2" height="22"/><rect x="64" y="36" width="3.5" height="22"/><rect x="71" y="36" width="2" height="22"/><rect x="76" y="36" width="4.5" height="22"/></g><rect x="34" y="44" width="52" height="3" rx="1.5" fill="#F47C20" opacity=".85"/></svg></div><div class="left"><div class="src">Quest Diagnostics · Labcorp</div><h4>Tăng khả năng truy xuất mẫu</h4></div><div class="right"><div class="obs">Mỗi bộ kit đều có mã định danh riêng.</div><div class="take"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg><span>Tích hợp barcode để hỗ trợ mở rộng quy mô và quản lý mẫu.</span></div></div></div>
+      <div class="bench-row reveal d1"><div class="bench-viz"><img class="viz-img" src="../asset/4.2.2.5.jpg" alt="Túi chống rò an toàn sinh học" onerror="this.classList.add('miss')"><svg viewBox="0 0 120 90" fill="none"><rect x="38" y="22" width="44" height="50" rx="6" fill="#EAF1F9" stroke="#16318F" stroke-width="2.5"/><path d="M38 33h44" stroke="#16318F" stroke-width="2.5"/><path d="M60 39 l12 4 v8 c0 8.5-12 12.5-12 12.5 S48 59.5 48 51 v-8 z" fill="#F47C20"/><path d="M55 50.5 l4 4 7-7" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="left"><div class="src">Hệ thống xét nghiệm quốc tế</div><h4>An toàn sinh học không tăng độ phức tạp</h4></div><div class="right"><div class="obs">Sử dụng túi chống rò và bao bì chuyên dụng thay vì nhiều lớp vật tư phức tạp.</div><div class="take"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg><span>Ưu tiên giải pháp đơn giản nhưng đủ an toàn và dễ sử dụng.</span></div></div></div>
+      <div class="bench-row reveal d2"><div class="bench-viz"><img class="viz-img" src="../asset/4.2.2.6.jpg" alt="Thông điệp nộp mẫu ngay trên bao bì" onerror="this.classList.add('miss')"><svg viewBox="0 0 120 90" fill="none"><rect x="30" y="38" width="22" height="38" rx="4" fill="#fff" stroke="#16318F" stroke-width="2.5"/><rect x="34" y="30" width="14" height="10" rx="2" fill="#F47C20"/><rect x="34" y="52" width="14" height="14" rx="2" fill="#DCE6F5"/><rect x="60" y="28" width="34" height="22" rx="6" fill="#16318F"/><path d="M66 50 v9 l9-9 z" fill="#16318F"/><rect x="65" y="35" width="24" height="3.4" rx="1.7" fill="#fff"/><rect x="65" y="42" width="15" height="3.4" rx="1.7" fill="#F8B98A"/></svg></div><div class="left"><div class="src">Consumer Healthcare Packaging</div><h4>Thông điệp hành động trên bao bì</h4></div><div class="right"><div class="obs">Thông điệp hành động phải xuất hiện ngay trên bao bì sản phẩm.</div><div class="take"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg><span>Trên nắp lọ &amp; mặt trước hộp cần in rõ thông điệp <b>"Nộp mẫu ngay sau khi lấy"</b>.</span></div></div></div>
+    </div>
+
+    <!-- Kit options -->
+    <div class="reveal" style="margin-bottom:28px">
+      <div class="eyebrow">4.2.3 — Bộ Kit đề xuất</div>
+      <h3 style="font-size:clamp(1.3rem,2.5vw,1.7rem)">Bốn phương án — cân bằng trải nghiệm, mở rộng &amp; chi phí</h3>
+    </div>
+    <div class="kits">
+      <div class="kit reveal"><div class="kit-viz k01"><img class="viz-img" src="../asset/4.3.2.1-jpg.png" alt="Bộ Kit 01 - Hộp giấy cứng mắc cài" onerror="this.classList.add('miss')"><svg viewBox="0 0 150 112" fill="none" font-family="Inter, sans-serif"><rect x="18" y="9" width="114" height="94" rx="4" fill="#fff" stroke="#1B3F94" stroke-width="2"/><path d="M21 9 h108 a3 3 0 0 1 3 3 v2 H18 v-2 a3 3 0 0 1 3-3 z" fill="#1B3F94"/><path d="M21 9 a3 3 0 0 0 -3 3 v88 a3 3 0 0 0 3 3 h7 V9 z" fill="#1B3F94"/><path d="M28 95 h101 a3 3 0 0 1 3 3 v2 a3 3 0 0 1 -3 3 H28 z" fill="#1B3F94"/><text x="23.5" y="88" font-size="3.1" font-weight="700" fill="#fff" transform="rotate(-90 23.5 88)" letter-spacing="0.2">NỘP MẪU NGAY SAU KHI LẤY</text><g transform="translate(37,15)"><g transform="skewX(-11) scale(0.3)"><rect x="0" y="0" width="11" height="28" rx="3" fill="#16318F"/><rect x="14" y="0" width="11" height="28" rx="3" fill="#F47C20"/><rect x="28" y="0" width="11" height="28" rx="3" fill="#54AE3A"/></g></g><text x="51" y="18" font-size="3.7" font-weight="800" fill="#1B3F94">XÉT NGHIỆM</text><text x="51" y="23.5" font-size="5.2" font-weight="800" fill="#1B3F94">LONG CHÂU</text><path d="M86 13 v12" stroke="#C7D4E6" stroke-width="0.8"/><text x="91" y="18" font-size="3.7" font-weight="800" fill="#16318F">LAB</text><text x="91" y="23.5" font-size="3.7" font-weight="800" fill="#54AE3A">HOUSE</text><text x="79" y="46" font-size="8.4" font-weight="800" fill="#16318F" text-anchor="middle">BỘ KIT TỰ LẤY MẪU</text><text x="79" y="56" font-size="8.4" font-weight="800" fill="#16318F" text-anchor="middle">NƯỚC TIỂU</text><rect x="44" y="61" width="71" height="11" rx="5.5" fill="#F2C411"/><text x="77" y="68.6" font-size="4.5" font-weight="700" fill="#14306E" text-anchor="middle" letter-spacing="0.2">NỘP MẪU NGAY SAU KHI LẤY</text><path d="M108 64 l3 2.5 -3 2.5 z" fill="#14306E"/><g stroke="#16318F" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="59" cy="82" r="5.2"/><path d="M56.7 82 l1.6 1.6 2.9-3.3"/><circle cx="79" cy="82" r="5.2"/><path d="M79 79.2 v2.8 l1.9 1.3"/><path d="M101 76.9 l4.4 1.7 v3 c0 3-4.4 4.6-4.4 4.6 s-4.4-1.6-4.4-4.6 v-3 z"/><path d="M98.9 81.5 l1.4 1.4 2.5-2.6"/></g><g font-size="3.3" font-weight="700" fill="#16318F" text-anchor="middle"><text x="59" y="92.5">ĐƠN GIẢN</text><text x="79" y="92.5">TIỆN LỢI</text><text x="101" y="92.5">TIN CẬY</text></g><g fill="#A9C7EF"><circle cx="114" cy="83" r="1.5"/><circle cx="119" cy="83" r="1.2"/><circle cx="124" cy="83" r="0.9"/><circle cx="112" cy="88" r="1.5"/><circle cx="117" cy="88" r="1.3"/><circle cx="122" cy="88" r="1"/><circle cx="127" cy="88" r="0.7"/><circle cx="115" cy="93" r="1.2"/><circle cx="120" cy="93" r="1"/><circle cx="125" cy="93" r="0.8"/></g></svg></div><div class="opt">Bộ Kit 01</div><h4>Hộp giấy cứng mắc cài</h4><div class="price">8.600<small> đ/kit</small></div><div class="focus"><b>Ưu tiên Customer Experience</b> — cảm nhận sản phẩm cao cấp nhất.</div></div>
+      <div class="kit reveal d1"><div class="kit-viz k02"><img class="viz-img" src="../asset/4.3.2.2-jpg.png" alt="Bộ Kit 02 - Hộp giấy dạng rút" onerror="this.classList.add('miss')"><svg viewBox="0 0 140 100" fill="none"><path d="M28 46 L58 34 L88 46 L58 58 Z" fill="#DCE6F5" stroke="#16318F" stroke-width="2.5" stroke-linejoin="round"/><path d="M28 46 V78 L58 90 V58 Z" fill="#16318F"/><path d="M88 46 V78 L58 90 V58 Z" fill="#2C5797"/><path d="M84 52 L110 42 L120 47 L94 57 Z" fill="#fff" stroke="#16318F" stroke-width="2.2" stroke-linejoin="round"/><path d="M94 57 V72 L120 62 V47 Z" fill="#EAF1F9" stroke="#16318F" stroke-width="2.2" stroke-linejoin="round"/><circle cx="106" cy="55" r="3.2" fill="#F47C20"/></svg></div><div class="opt">Bộ Kit 02</div><h4>Hộp giấy dạng rút</h4><div class="price">8.100<small> đ/kit</small></div><div class="focus"><b>Cân bằng CX &amp; Cost</b> — trải nghiệm tốt với chi phí hợp lý.</div></div>
+      <div class="kit reveal d2"><div class="kit-viz k03"><img class="viz-img" src="../asset/4.3.2.3-jpg.png" alt="Bộ Kit 03 - Hộp giấy cứng nắp cài" onerror="this.classList.add('miss')"><svg viewBox="0 0 150 112" fill="none" font-family="Inter, sans-serif"><rect x="20" y="9" width="110" height="94" rx="4" fill="#fff" stroke="#1B3F94" stroke-width="2"/><path d="M23 9 h104 a3 3 0 0 1 3 3 v2 H20 v-2 a3 3 0 0 1 3-3 z" fill="#1B3F94"/><path d="M23 9 a3 3 0 0 0 -3 3 v88 a3 3 0 0 0 3 3 h7 V9 z" fill="#1B3F94"/><path d="M30 95 h97 a3 3 0 0 1 3 3 v2 a3 3 0 0 1 -3 3 H30 z" fill="#1B3F94"/><text x="25.5" y="88" font-size="3.2" font-weight="700" fill="#fff" transform="rotate(-90 25.5 88)" letter-spacing="0.2">NỘP MẪU NGAY SAU KHI LẤY</text><g transform="translate(39,15)"><g transform="skewX(-11) scale(0.33)"><rect x="0" y="0" width="11" height="28" rx="3" fill="#16318F"/><rect x="14" y="0" width="11" height="28" rx="3" fill="#F47C20"/><rect x="28" y="0" width="11" height="28" rx="3" fill="#54AE3A"/></g></g><text x="55" y="18.5" font-size="4" font-weight="800" fill="#1B3F94" letter-spacing="0.2">XÉT NGHIỆM</text><text x="55" y="24.5" font-size="5.8" font-weight="800" fill="#1B3F94" letter-spacing="0.2">LONG CHÂU</text><text x="78" y="45" font-size="8.2" font-weight="800" fill="#16318F" text-anchor="middle">BỘ KIT TỰ LẤY MẪU</text><text x="78" y="55" font-size="8.2" font-weight="800" fill="#16318F" text-anchor="middle">NƯỚC TIỂU</text><rect x="44" y="60" width="69" height="11" rx="5.5" fill="#F2C411"/><text x="78.5" y="67.6" font-size="4.6" font-weight="700" fill="#14306E" text-anchor="middle" letter-spacing="0.2">NỘP MẪU NGAY SAU KHI LẤY</text><g stroke="#16318F" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="59" cy="82" r="5.2"/><path d="M56.7 82 l1.6 1.6 2.9-3.3"/><circle cx="78" cy="82" r="5.2"/><path d="M78 79.2 v2.8 l1.9 1.3"/><path d="M100 76.9 l4.4 1.7 v3 c0 3-4.4 4.6-4.4 4.6 s-4.4-1.6-4.4-4.6 v-3 z"/><path d="M97.9 81.5 l1.4 1.4 2.5-2.6"/></g><g font-size="3.3" font-weight="700" fill="#16318F" text-anchor="middle"><text x="59" y="92.5">ĐƠN GIẢN</text><text x="78" y="92.5">TIỆN LỢI</text><text x="100" y="92.5">TIN CẬY</text></g><g fill="#A9C7EF"><circle cx="112" cy="83" r="1.5"/><circle cx="117" cy="83" r="1.2"/><circle cx="122" cy="83" r="0.9"/><circle cx="110" cy="88" r="1.5"/><circle cx="115" cy="88" r="1.3"/><circle cx="120" cy="88" r="1"/><circle cx="125" cy="88" r="0.7"/><circle cx="113" cy="93" r="1.2"/><circle cx="118" cy="93" r="1"/><circle cx="123" cy="93" r="0.8"/></g></svg></div><div class="opt">Bộ Kit 03</div><h4>Hộp giấy cứng nắp cài</h4><div class="price">6.600<small> đ/kit</small></div><div class="focus"><b>Cân bằng, ưu tiên Cost</b> — phù hợp combo xét nghiệm.</div></div>
+      <div class="kit featured reveal d3"><div class="kit-viz k04"><img class="viz-img" src="../asset/4.3.2.4-jpg.png" alt="Bộ Kit 04 - Túi ZIP thương hiệu" onerror="this.classList.add('miss')"><svg viewBox="0 0 110 120" fill="none" font-family="Inter, sans-serif"><rect x="14" y="14" width="82" height="100" rx="6" fill="#fff" stroke="#1B3F94" stroke-width="1.6"/><path d="M20 14 h70 a6 6 0 0 1 6 6 v3 H14 v-3 a6 6 0 0 1 6-6 z" fill="#2E59A6"/><circle cx="55" cy="18.5" r="1.5" fill="#fff"/><path d="M18 27 h74" stroke="#A9C0E2" stroke-width="1" stroke-dasharray="2 2"/><g transform="translate(22,31)"><g transform="skewX(-11) scale(0.27)"><rect x="0" y="0" width="11" height="28" rx="3" fill="#16318F"/><rect x="14" y="0" width="11" height="28" rx="3" fill="#F47C20"/><rect x="28" y="0" width="11" height="28" rx="3" fill="#54AE3A"/></g></g><text x="34" y="34.5" font-size="3.3" font-weight="800" fill="#1B3F94">XÉT NGHIỆM</text><text x="34" y="39.5" font-size="4.6" font-weight="800" fill="#1B3F94">LONG CHÂU</text><text x="55" y="60" font-size="6.4" font-weight="800" fill="#16318F" text-anchor="middle">BỘ KIT TỰ LẤY MẪU</text><text x="55" y="68" font-size="6.4" font-weight="800" fill="#16318F" text-anchor="middle">NƯỚC TIỂU</text><rect x="24" y="72" width="62" height="9" rx="4.5" fill="#F2C411"/><text x="55" y="78.2" font-size="3.8" font-weight="700" fill="#14306E" text-anchor="middle">NỘP MẪU NGAY SAU KHI LẤY</text><g stroke="#16318F" stroke-width="1.1" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="37" cy="90" r="4.2"/><path d="M35.2 90 l1.3 1.3 2.3-2.7"/><circle cx="55" cy="90" r="4.2"/><path d="M55 87.8 v2.2 l1.5 1"/><path d="M73 85.6 l3.6 1.4 v2.4 c0 2.4-3.6 3.7-3.6 3.7 s-3.6-1.3-3.6-3.7 v-2.4 z"/><path d="M71.3 89.3 l1.1 1.1 2-2.1"/></g><g font-size="2.7" font-weight="700" fill="#16318F" text-anchor="middle"><text x="37" y="98.5">ĐƠN GIẢN</text><text x="55" y="98.5">TIỆN LỢI</text><text x="73" y="98.5">TIN CẬY</text></g><path d="M14 104 q20 -5 41 0 t41 0 V108 a6 6 0 0 1 -6 6 H20 a6 6 0 0 1 -6 -6 Z" fill="#1B3F94"/><text x="55" y="111" font-size="3" font-weight="700" fill="#fff" text-anchor="middle">1800 6928</text></svg></div><div class="opt">Bộ Kit 04</div><h4>Túi ZIP thương hiệu</h4><div class="price">1.600–2.100<small> đ/kit</small></div><div class="focus"><b>Ưu tiên Cost</b> — tối ưu cho SKU đơn lẻ &lt; 100.000đ.</div></div>
+    </div>
+
+    <div class="tablewrap reveal" style="margin-bottom:30px">
+      <table class="pretty">
+        <thead><tr><th>Thành phần</th><th style="text-align:right">Kit 01 · Hộp cứng</th><th style="text-align:right">Kit 02 · Dạng rút</th><th style="text-align:right">Kit 03 · Nắp cài</th><th style="text-align:right">Kit 04 · Túi ZIP</th></tr></thead>
+        <tbody>
+          <tr><td>Bao bì chính</td><td class="r">7.500đ</td><td class="r">7.000đ</td><td class="r">5.500đ</td><td class="r">1.000–1.500đ</td></tr>
+          <tr><td>Găng tay y tế</td><td class="r">300đ</td><td class="r">300đ</td><td class="r">300đ</td><td class="r">300đ</td></tr>
+          <tr><td>Túi ZIP trơn</td><td class="r">500đ</td><td class="r">500đ</td><td class="r">500đ</td><td class="r">—</td></tr>
+          <tr><td>Tờ hướng dẫn A5 in màu</td><td class="r">300đ</td><td class="r">300đ</td><td class="r">300đ</td><td class="r">300đ</td></tr>
+          <tr class="total"><td>Tổng chi phí / Kit</td><td class="r">8.600đ</td><td class="r">8.100đ</td><td class="r">6.600đ</td><td class="r">1.600–2.100đ</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Required components + message -->
+    <div class="grid g2 reveal" style="margin-bottom:10px;align-items:stretch">
+      <div class="card">
+        <h3 style="margin-bottom:18px">Thành phần bắt buộc của bộ kit</h3>
+        <div style="display:grid;gap:12px">
+          <div style="display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid var(--line)"><span style="color:var(--slate);font-size:13.5px">Thu nhận mẫu</span><b style="font-size:13.5px;color:var(--navy-800)">Lọ lấy mẫu nước tiểu 60ml</b></div>
+          <div style="display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid var(--line)"><span style="color:var(--slate);font-size:13.5px">Bảo vệ mẫu</span><b style="font-size:13.5px;color:var(--navy-800)">Túi Zip</b></div>
+          <div style="display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid var(--line)"><span style="color:var(--slate);font-size:13.5px">Bảo vệ người dùng</span><b style="font-size:13.5px;color:var(--navy-800)">Găng tay y tế</b></div>
+          <div style="display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid var(--line)"><span style="color:var(--slate);font-size:13.5px">Hướng dẫn sử dụng</span><b style="font-size:13.5px;color:var(--navy-800)">Tờ hướng dẫn lấy mẫu tại nhà</b></div>
+          <div style="display:flex;justify-content:space-between;gap:16px;padding:10px 0"><span style="color:var(--slate);font-size:13.5px">Truy xuất mẫu</span><b style="font-size:13.5px;color:var(--navy-800)">Barcode định danh dán trên lọ</b></div>
+        </div>
+      </div>
+      <div class="card" style="background:var(--bg-navy-grad);border:none;color:#fff;display:flex;flex-direction:column;justify-content:center">
+        <div style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#FFB877;margin-bottom:16px">Thông điệp thiết kế xuyên suốt</div>
+        <div style="font-size:clamp(1.5rem,3vw,2rem);font-weight:800;letter-spacing:-.02em;line-height:1.2;color:#fff">"NỘP MẪU NGAY<br>SAU KHI LẤY"</div>
+        <p style="color:#A9BAD2;font-size:14px;margin-top:18px;line-height:1.6">Giải quyết nút thắt lớn nhất của Pilot — tỷ lệ hoàn thành hành trình mới đạt 79,3%. Toàn bộ các phương án bộ kit đều phải truyền tải thông điệp này trên nắp lọ và mặt trước hộp.</p>
+      </div>
+    </div>
+
+    <!-- Recommendation -->
+    <div class="reco">
+      <div class="reco-card reveal"><div class="sku">SKU xét nghiệm đơn lẻ</div><h4>Túi ZIP thương hiệu</h4><p>Tối ưu chi phí, đảm bảo an toàn sinh học và vẫn giữ nhận diện thương hiệu. Đây là lựa chọn mặc định cho phần lớn xét nghiệm phổ thông.</p></div>
+      <div class="reco-card alt reveal d1"><div class="sku">Combo xét nghiệm</div><h4>Hộp giấy nắp cài / dạng rút</h4><p>Gia tăng giá trị cảm nhận, phù hợp với mức giá cao hơn và kỳ vọng trải nghiệm của khách hàng combo.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BREATHER 1 ============ -->
+<section class="breather">
+  <div class="grid-bg"></div>
+  <div class="glow"></div>
+  <div class="glow b"></div>
+  <div class="wrap">
+    <div class="eyebrow reveal">Từ sản phẩm đến hệ thống</div>
+    <h2 class="reveal d1">Sản phẩm tạo <span class="grad">niềm tin</span>.<br>Hệ thống tạo <span class="grad">quy mô</span>.</h2>
+    <p class="reveal d2">Bộ kit chinh phục khách hàng ở điểm chạm đầu tiên — nhưng chính nền tảng dữ liệu và hệ thống mới quyết định khả năng nhân rộng trên toàn mạng lưới.</p>
+  </div>
+</section>
+
+<!-- ============ PART 5: DATA FLOW & SYSTEM ============ -->
+<section class="section-gray" id="system">
+  <div class="wrap">
+    <div class="shead">
+      <div class="eyebrow reveal">Phần 05 — Data Flow &amp; System Requirements</div>
+      <h2 class="reveal d1">Hệ thống là xương sống của khả năng mở rộng</h2>
+      <p class="lead reveal d2">Mỗi bước nghiệp vụ end-to-end được ánh xạ tới năng lực hệ thống cần hỗ trợ, phân theo 3 mức ưu tiên triển khai.</p>
+    </div>
+
+    <div class="prio-legend reveal">
+      <span class="plg"><span class="d p1"></span>Ưu tiên 1 — Go-Live (bắt buộc)</span>
+      <span class="plg"><span class="d p2"></span>Ưu tiên 2 — Scale-up</span>
+      <span class="plg"><span class="d p3"></span>Ưu tiên 3 — Tối ưu hóa</span>
+    </div>
+
+    <div class="tablewrap reveal" style="margin-bottom:80px">
+      <table class="pretty">
+        <thead><tr><th style="width:80px">Bước</th><th>Nghiệp vụ</th><th>Hệ thống cần hỗ trợ</th><th style="text-align:right">Ưu tiên</th></tr></thead>
+        <tbody>
+          <tr><td><b>0</b></td><td>Phân bổ bộ kit từ kho đến nhà thuốc</td><td class="muted"><span class="li first">Quản lý SKU bộ kit</span><span class="li">Theo dõi tồn kho bộ kit</span><span class="li">Cảnh báo tồn kho thấp</span></td><td class="r"><span class="prio-badge p3">3</span></td></tr>
+          <tr><td><b>1</b></td><td>Dược sĩ tư vấn &amp; bán bộ kit</td><td class="muted"><span class="li first">Tạo đơn dịch vụ</span><span class="li">Thu thập thông tin khách hàng</span><span class="li">Sinh &amp; in Barcode</span><span class="li">Ghi nhận doanh thu</span></td><td class="r"><span class="prio-badge p1">1</span></td></tr>
+          <tr><td><b>2</b></td><td>Khách hàng mang bộ kit về nhà</td><td class="muted"><span class="li first">Nhắc khách D+3 chưa nộp</span><span class="li">Nhắc khách D+6 chưa nộp</span></td><td class="r"><span class="prio-badge p2">2</span></td></tr>
+          <tr><td><b>3</b></td><td>Khách hàng quay lại nộp mẫu</td><td class="muted"><span class="li first">Tra cứu đơn theo SĐT</span><span class="li"><b style="color:var(--navy-800)">Ghi nhận thời gian lấy mẫu</b></span><span class="li">Chấp nhận / Từ chối mẫu</span><span class="li">Ghi lý do từ chối</span><span class="li">Xác nhận nhận mẫu</span><span class="li">Sinh Lab Order tự động</span><span class="li">Đồng bộ Labhouse</span></td><td class="r"><span class="prio-badge p1">1</span></td></tr>
+          <tr><td><b>4</b></td><td>Nhà thuốc bảo quản mẫu</td><td class="muted"><span class="li">Dashboard theo dõi mẫu chờ thu gom</span></td><td class="r"><span class="prio-badge p2">2</span></td></tr>
+          <tr><td><b>5</b></td><td>Logistics thu gom mẫu</td><td class="muted"><span class="li first">Danh sách điểm cần thu gom</span><span class="li">Danh sách mẫu chờ thu gom theo nhà thuốc</span><span class="li">In biên bản bàn giao</span></td><td class="r"><span class="prio-badge p2">2</span></td></tr>
+          <tr><td><b>6</b></td><td>Logistics bàn giao cho Labhouse</td><td class="muted"><span class="li first">Cập nhật trạng thái đã bàn giao</span><span class="li">Lịch sử bàn giao mẫu (Chain of Custody)</span></td><td class="r"><span class="prio-badge p1">1</span></td></tr>
+          <tr><td><b>7</b></td><td>Labhouse tiếp nhận mẫu</td><td class="muted"><span class="li">Cập nhật trạng thái đã đến Lab</span></td><td class="r"><span class="prio-badge p1">1</span></td></tr>
+          <tr><td><b>★</b></td><td>Xuyên suốt</td><td class="muted"><span class="li first">Sample Tracking Dashboard</span><span class="li">Phân quyền người dùng</span><span class="li">Audit Log</span></td><td class="r"><span class="prio-badge p1">1</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Sample lifecycle -->
+    <div class="reveal" style="margin-bottom:34px">
+      <div class="eyebrow">5.2 — Vòng đời mẫu xét nghiệm (Sample Lifecycle)</div>
+      <h3 style="font-size:clamp(1.3rem,2.5vw,1.7rem)">Bảy trạng thái — một hành trình mẫu minh bạch</h3>
+    </div>
+    <div class="lifecycle reveal">
+      <div class="lc-step"><div class="lc-connector"></div><div class="lc-node"><div class="lc-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><div class="lc-text"><h5>Chờ nộp mẫu</h5><div class="who">Hệ thống tự động</div><div class="note">Thanh toán xong, đơn tạo &amp; bộ kit đã bàn giao.</div></div></div></div>
+      <div class="lc-step"><div class="lc-connector"></div><div class="lc-node"><div class="lc-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6 9 17l-5-5"/></svg></div><div class="lc-text"><h5>Đã nhận mẫu</h5><div class="who">Nhà thuốc</div><div class="note">Dược sĩ tiếp nhận mẫu đạt yêu cầu. SLA → Alert nếu vượt.</div></div></div></div>
+      <div class="lc-step"><div class="lc-connector"></div><div class="lc-node"><div class="lc-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 3h15v13H1zM16 8h4l3 3v5h-7"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div><div class="lc-text"><h5>Đang vận chuyển</h5><div class="who">Nhà thuốc</div><div class="note">Bàn giao mẫu cho Logistics và ký biên bản.</div></div></div></div>
+      <div class="lc-step"><div class="lc-connector"></div><div class="lc-node"><div class="lc-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M5 21V8l7-5 7 5v13"/></svg></div><div class="lc-text"><h5>Đã đến Lab</h5><div class="who">Labhouse</div><div class="note">Labhouse tiếp nhận mẫu từ Logistics.</div></div></div></div>
+      <div class="lc-step"><div class="lc-connector"></div><div class="lc-node"><div class="lc-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3v6l-5 9a2 2 0 0 0 2 3h12a2 2 0 0 0 2-3l-5-9V3M8 3h8"/></svg></div><div class="lc-text"><h5>Đang xét nghiệm</h5><div class="who">Labhouse</div><div class="note">Labhouse bắt đầu thực hiện xét nghiệm.</div></div></div></div>
+      <div class="lc-step"><div class="lc-connector"></div><div class="lc-node"><div class="lc-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h4"/></svg></div><div class="lc-text"><h5>Đã có kết quả</h5><div class="who">Labhouse</div><div class="note">Labhouse phát hành kết quả.</div></div></div></div>
+      <div class="lc-step"><div class="lc-connector"></div><div class="lc-node"><div class="lc-dot" style="border-color:var(--orange);color:var(--orange)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg></div><div class="lc-text"><h5>Hoàn thành</h5><div class="who">Hệ thống tự động</div><div class="note">Kết quả đồng bộ thành công về hệ thống Long Châu.</div></div></div></div>
+    </div>
+    <div class="lc-exception reveal">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><path d="M12 9v4M12 17h.01"/></svg></div>
+      <div><h5>Trạng thái ngoại lệ — Từ chối tiếp nhận mẫu</h5><p>Dược sĩ đánh giá mẫu không đạt điều kiện tiếp nhận · Cập nhật bởi Nhà thuốc · Hệ thống <b>mRSA</b>.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- System Roadmap -->
+<section id="roadmap">
+  <div class="wrap">
+    <div class="shead">
+      <div class="eyebrow reveal">5.4 — Roadmap triển khai hệ thống</div>
+      <h2 class="reveal d1">Ba giai đoạn — luôn có phương án vận hành thay thế</h2>
+      <p class="lead reveal d2">Tính năng ưu tiên 1 là điều kiện bắt buộc để Go-Live. Các tính năng còn lại có phương án thủ công tạm thời, đảm bảo mô hình vận hành được ngay cả khi hệ thống chưa hoàn thiện.</p>
+    </div>
+    <div class="phases">
+      <div class="phase reveal">
+        <div class="phase-head"><div class="ph-tag">Giai đoạn 01</div><h3>Go-Live</h3><div class="ph-sub">Ưu tiên 1 · Không có phương án thay thế</div></div>
+        <div class="phase-body">
+          <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Tạo đơn dịch vụ</div>
+          <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Sinh &amp; in Barcode</div>
+          <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Sinh Lab Order tự động</div>
+          <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Sample Tracking Dashboard</div>
+          <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Chấp nhận / Từ chối mẫu</div>
+        </div>
+      </div>
+      <div class="phase reveal d1">
+        <div class="phase-head"><div class="ph-tag">Giai đoạn 02</div><h3>Scale-up</h3><div class="ph-sub">Ưu tiên 2 · Có phương án thủ công tạm thời</div></div>
+        <div class="phase-body">
+          <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Nhắc khách chưa nộp mẫu (D+3, D+6)</div>
+          <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Danh sách Ecom Call (D+10)</div>
+          <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Dashboard mẫu chờ thu gom</div>
+          <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Danh sách điểm thu gom · In biên bản</div>
+          <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Chain of Custody · Tồn kho &amp; cảnh báo</div>
+        </div>
+      </div>
+      <div class="phase reveal d2">
+        <div class="phase-head"><div class="ph-tag">Giai đoạn 03</div><h3>Tối ưu hóa</h3><div class="ph-sub">Ưu tiên 3 · Nâng cao hiệu quả</div></div>
+        <div class="phase-body">
+          <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Incentive tự động</div>
+          <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Dashboard Completion Rate</div>
+          <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Dashboard quản trị</div>
+          <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Dashboard doanh thu</div>
+          <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Biên bản điện tử</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BREATHER 2 ============ -->
+<section class="breather">
+  <div class="grid-bg"></div>
+  <div class="glow"></div>
+  <div class="glow b"></div>
+  <div class="wrap">
+    <div class="eyebrow reveal">Chất lượng &amp; Vận hành nền tảng</div>
+    <h2 class="reveal d1">Chuẩn hóa <span class="grad">hôm nay</span>,<br>mở rộng <span class="grad">ngày mai</span>.</h2>
+    <p class="reveal d2">QA, logistics và cơ sở vật chất là phần ít được nhìn thấy nhất — nhưng là điều kiện để chất lượng mẫu được giữ đồng nhất khi vận hành ở quy mô hàng trăm nhà thuốc.</p>
+  </div>
+</section>
+
+<!-- ============ PART 6-8: QA / LOGISTICS / FACILITY ============ -->
+<section class="section-gray" id="qa">
+  <div class="wrap">
+    <div class="shead">
+      <div class="eyebrow reveal">Phần 06 — Chính sách QA</div>
+      <h2 class="reveal d1">Chuẩn hóa chất lượng đồng nhất trên toàn hệ thống</h2>
+      <p class="lead reveal d2">Cần xây dựng và ban hành bộ tiêu chuẩn quản lý chất lượng dành riêng cho mô hình thu nhận mẫu nước tiểu tại nhà thuốc — không chỉ kiểm soát chất lượng mẫu mà còn đảm bảo tính nhất quán khi triển khai trên quy mô lớn.</p>
+    </div>
+    <div class="qa-grid">
+      <div class="qa-card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><div><h4>Tiêu chuẩn tiếp nhận &amp; từ chối mẫu</h4><p>Đảm bảo chỉ các mẫu đáp ứng yêu cầu chất lượng mới được đưa vào quy trình xét nghiệm.</p></div></div>
+      <div class="qa-card reveal d1"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 21h18M5 21V8l7-5 7 5v13"/><rect x="9" y="13" width="6" height="8"/></svg></div><div><h4>Chính sách thu nhận mẫu tại nhà thuốc</h4><p>Chuẩn hóa quy trình tiếp nhận, kiểm tra và ghi nhận mẫu giữa các nhà thuốc.</p></div></div>
+      <div class="qa-card reveal d2"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M1 3h15v13H1zM16 8h4l3 3v5h-7"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div><div><h4>Chính sách bảo quản &amp; vận chuyển bệnh phẩm</h4><p>Đảm bảo điều kiện bảo quản mẫu xuyên suốt từ nhà thuốc đến Labhouse.</p></div></div>
+      <div class="qa-card reveal d3"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><path d="M12 9v4M12 17h.01"/></svg></div><div><h4>Chính sách xử lý mẫu không đạt</h4><p>Quy định rõ trách nhiệm và hướng xử lý với các trường hợp mẫu bị từ chối hoặc không đáp ứng yêu cầu kỹ thuật.</p></div></div>
+      <div class="qa-card reveal d4" style="grid-column:1/-1"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg></div><div><h4>Chính sách truy xuất &amp; quản lý chuỗi bàn giao mẫu (Chain of Custody)</h4><p>Đảm bảo khả năng truy vết toàn bộ hành trình mẫu khi phát sinh sự cố — nền tảng cho dispute protection và audit readiness.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="logistics-design">
+  <div class="wrap">
+    <div class="shead">
+      <div class="eyebrow reveal">Phần 07 — Thiết kế vận hành Logistics</div>
+      <h2 class="reveal d1">Mô hình vận chuyển kết hợp — <em style="color:var(--orange);font-style:normal">Hybrid Logistics</em></h2>
+      <p class="lead reveal d2">Để đảm bảo chất lượng mẫu và khả năng mở rộng, đề xuất áp dụng mô hình vận chuyển kết hợp (Hybrid Logistics) gồm hai phương án — đội nội bộ làm nòng cốt, đối tác vận chuyển bổ sung khi cần.</p>
+    </div>
+
+    <div class="grid g2" style="margin-bottom:26px">
+      <div class="role reveal" style="border-top:4px solid var(--navy-800)"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M1 3h15v13H1zM16 8h4l3 3v5h-7"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div><div><h3>Đội vận chuyển nội bộ Long Châu</h3><div class="tagline" style="color:var(--navy-700)">Phương án ưu tiên</div><p>Đảm bảo kiểm soát SLA, điều kiện bảo quản và chuỗi bàn giao mẫu (Chain of Custody).</p></div></div>
+      <div class="role reveal d1" style="border-top:4px solid var(--orange)"><div class="ic" style="background:var(--orange)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="6" cy="19" r="2.6"/><circle cx="18" cy="5" r="2.6"/><path d="M6 16.4V9a4 4 0 0 1 4-4h4M18 7.6V15a4 4 0 0 1-4 4H8"/></svg></div><div><h3>Grab / Đối tác vận chuyển</h3><div class="tagline">Phương án bổ sung</div><p>Sử dụng khi phát sinh nhu cầu đột xuất hoặc tại khu vực chưa có tuyến vận chuyển nội bộ.</p></div></div>
+    </div>
+
+    <div class="lc-exception reveal" style="background:var(--orange-soft);border-color:#F8D2B4;margin-bottom:62px">
+      <div class="ic" style="background:#FCE4DC;color:var(--orange-600)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1h6c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"/></svg></div>
+      <div><h5 style="color:var(--navy-800)">Khuyến nghị triển khai</h5><p style="color:var(--slate)">Giai đoạn đầu ưu tiên sử dụng đội vận chuyển nội bộ Long Châu nhằm chuẩn hóa quy trình và đảm bảo chất lượng mẫu. Đối tác vận chuyển chỉ được sử dụng trong các trường hợp ngoại lệ hoặc khi mở rộng quy mô.</p></div>
+    </div>
+
+    <div class="logi-flow">
+      <div>
+        <div class="eyebrow reveal" style="margin-bottom:20px">Tần suất thu gom — 2 chuyến/ngày</div>
+        <div class="logi-times">
+          <div class="logi-time reveal"><div class="clock"><span>09</span>:00</div><div class="lab"><b>Chuyến 1 — Buổi sáng</b>Thu gom mẫu phát sinh từ chiều hôm trước và đầu giờ sáng.</div></div>
+          <div class="logi-time reveal d1"><div class="clock"><span>16</span>:30</div><div class="lab"><b>Chuyến 2 — Buổi chiều</b>Thu gom mẫu phát sinh trong ngày, giảm thời gian lưu mẫu tại nhà thuốc.</div></div>
+        </div>
+        <p style="color:var(--slate);font-size:14px;margin-top:20px;line-height:1.65" class="reveal d2">Tần suất này giúp đảm bảo thời gian lưu mẫu tại nhà thuốc ở mức tối thiểu, đồng thời tối ưu chi phí vận hành.</p>
+      </div>
+      <div>
+        <div class="eyebrow reveal" style="margin-bottom:20px">Quy trình bàn giao — 2 lần ký xác nhận</div>
+        <div class="handover reveal">
+          <div class="hnode">Nhà thuốc</div><span class="harrow">→</span><div class="hnode">Logistics</div><span class="harrow">→</span><div class="hnode">Labhouse</div>
+        </div>
+        <div class="logi-points">
+          <div class="lpoint reveal d1"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><div>Mỗi lần bàn giao đều <b>kiểm đếm số lượng mẫu và ký xác nhận</b> nhằm đảm bảo khả năng truy xuất khi phát sinh sự cố.</div></div>
+          <div class="lpoint reveal d2"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4M4 6v12c0 1.1.9 2 2 2h14v-4"/><path d="M18 12a2 2 0 0 0 0 4h4v-4z"/></svg></div><div>Mẫu được bảo quản trong <b>thùng chuyên dụng cùng đá gel</b> nhằm duy trì điều kiện bảo quản theo quy định trong suốt quá trình vận chuyển.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-gray" id="facility">
+  <div class="wrap">
+    <div class="shead">
+      <div class="eyebrow reveal">Phần 08 — Điều kiện bắt buộc khi triển khai</div>
+      <h2 class="reveal d1">Điều kiện bắt buộc khi triển khai tại nhà thuốc</h2>
+      <p class="lead reveal d2">Mỗi nhà thuốc tham gia phải đáp ứng đầy đủ các điều kiện dưới đây, kèm đầu mối chịu trách nhiệm (PIC), để đảm bảo vận hành đồng nhất và chất lượng mẫu.</p>
+    </div>
+    <div class="tablewrap reveal">
+      <table class="pretty">
+        <thead><tr><th>Điều kiện</th><th style="text-align:center">Bắt buộc</th><th style="text-align:right">PIC</th></tr></thead>
+        <tbody>
+          <tr><td>Đã đào tạo dược sĩ</td><td style="text-align:center"><span class="okdot">✓</span></td><td class="pic">HDYK &amp; TTDT</td></tr>
+          <tr><td>Có tài liệu hỗ trợ tư vấn tại nhà thuốc</td><td style="text-align:center"><span class="okdot">✓</span></td><td class="pic">HDYK &amp; TTDT &amp; MKT</td></tr>
+          <tr><td>Có máy in Barcode</td><td style="text-align:center"><span class="okdot">✓</span></td><td class="pic">AD</td></tr>
+          <tr><td>Có thùng xốp</td><td style="text-align:center"><span class="okdot">✓</span></td><td class="pic">NH</td></tr>
+          <tr><td>Có đá gel</td><td style="text-align:center"><span class="okdot">✓</span></td><td class="pic">AD</td></tr>
+          <tr><td>Có khu vực lưu mẫu <span class="muted">(không nằm trong phạm vi kiểm định GPP)</span></td><td style="text-align:center"><span class="okdot">✓</span></td><td class="pic">MKT</td></tr>
+          <tr><td>Các CR hệ thống ưu tiên loại 1</td><td style="text-align:center"><span class="okdot">✓</span></td><td class="pic">ISC</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLOSING ============ -->
+<section class="section-navy" id="close">
+  <div class="wrap">
+    <div class="closing">
+      <div class="eyebrow reveal" style="justify-content:center">Sẵn sàng cho giai đoạn tiếp theo</div>
+      <h2 class="reveal d1">Pilot đã chứng minh khả thi.<br>Scale-up sẽ chứng minh quy mô.</h2>
+      <p class="lead reveal d2">Với mạng lưới 2.678+ nhà thuốc, mô hình System-first và lộ trình triển khai theo 3 giai đoạn rõ ràng, Long Châu có nền tảng để đưa xét nghiệm về gần dân nhất — an toàn, truy xuất được và mở rộng được trên toàn quốc.</p>
+      <div class="closing-stats">
+        <div class="reveal d2"><div class="v">500<em>+</em></div><div class="l">Nhà thuốc triển khai</div></div>
+        <div class="reveal d3"><div class="v">3</div><div class="l">Giai đoạn triển khai hệ thống</div></div>
+        <div class="reveal d4"><div class="v">7</div><div class="l">Trạng thái vòng đời mẫu minh bạch</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a href="#top" class="brand"><span class="markchip"><img class="brand-logo" src="../asset/logo-xet-nghiem-long-chau.png" alt="Xét nghiệm Long Châu — FPT Retail" onerror="this.parentElement.classList.add('miss-chip');this.parentElement.nextElementSibling.style.display='flex'"></span><span class="brandtext" style="display:none;color:#fff">XÉT NGHIỆM LONG CHÂU<small style="color:#7E93B0">Roadmap Thương mại hóa · Scale-up</small></span></a>
+    <div>Mô hình Thu nhận mẫu Nước tiểu tại Nhà thuốc — Bản trình bày Hội đồng Quản trị</div>
+  </div>
+</footer>
+
+<script>
+// progress bar + nav state
+const nav=document.getElementById('nav'),prog=document.getElementById('progress');
+function onScroll(){
+  const st=window.scrollY||document.documentElement.scrollTop;
+  const h=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+  prog.style.width=(st/h*100)+'%';
+  nav.classList.toggle('scrolled',st>20);
+}
+window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+// reveal on scroll
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');
+    e.target.querySelectorAll('.bar i').forEach(b=>{b.style.width=(b.dataset.w||0)+'%';});
+    io.unobserve(e.target);}});
+},{threshold:.14,rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+// also trigger any bars whose parent already visible
+document.querySelectorAll('.lesson-card').forEach(c=>io.observe(c));
+
+// tabs
+document.querySelectorAll('.tab').forEach(t=>{
+  t.addEventListener('click',()=>{
+    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('.tabpanel').forEach(x=>x.classList.remove('active'));
+    t.classList.add('active');
+    document.getElementById(t.dataset.tab).classList.add('active');
+  });
+});
+
+// mobile menu
+const mm=document.getElementById('mobileMenu');
+document.getElementById('menuBtn').addEventListener('click',()=>mm.classList.add('open'));
+document.getElementById('closeMenu').addEventListener('click',()=>mm.classList.remove('open'));
+mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mm.classList.remove('open')));
+</script>
+</body>
+</html>

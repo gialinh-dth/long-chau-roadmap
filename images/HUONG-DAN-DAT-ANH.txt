@@ -1,0 +1,42 @@
+HƯỚNG DẪN LẮP ẢNH MINH HỌA
+=================================
+
+Đặt các file ảnh (.jpg) vào ĐÚNG thư mục "images" này, ĐÚNG tên bên dưới.
+Mở lại file long-chau-roadmap.html -> ảnh sẽ tự hiện thay cho hình vẽ minh họa tạm.
+(Nếu chưa có ảnh, web vẫn hiển thị hình vẽ SVG mặc định - không bị lỗi.)
+
+LƯU Ý: thư mục "images" phải nằm CÙNG CẤP với file long-chau-roadmap.html.
+
+
+LOGO (QUAN TRỌNG - giữ đúng thiết kế gốc, KHÔNG để bị méo)
+- Lưu file logo gốc (nền trắng, có chữ XÉT NGHIỆM LONG CHÂU + FPT Retail) với tên:
+  logo-xet-nghiem-long-chau.png
+- Logo này dùng cho cả thanh menu trên cùng và chân trang.
+- Nếu file là .jpg thay vì .png, báo lại để đổi đuôi trong code.
+- Khi chưa có file: menu tạm hiển thị bằng CHỮ (không vẽ mark giả) để tránh làm méo logo.
+
+
+PHẦN 4.2.2 - BÀI HỌC TỪ CÁC MÔ HÌNH DẪN ĐẦU (6 ảnh)
+- Tỷ lệ đề xuất: ngang ~4:3 (vd 600 x 450 px)
+
+1. baihoc-01-hop-thuong-hieu.jpg      -> Biến bộ kit thành sản phẩm hoàn chỉnh (hộp carton thương hiệu)
+2. baihoc-02-huong-dan-qr-video.jpg   -> Hướng dẫn sử dụng trực quan (QR + video)
+3. baihoc-03-cong-cu-hanh-vi.jpg      -> Công cụ hỗ trợ hành vi (card ghi ngày giờ + checklist)
+4. baihoc-04-barcode-truy-xuat.jpg    -> Tăng khả năng truy xuất mẫu (mã barcode)
+5. baihoc-05-an-toan-sinh-hoc.jpg     -> An toàn sinh học (túi chống rò)
+6. baihoc-06-thong-diep-bao-bi.jpg    -> Thông điệp hành động trên bao bì ("Nộp mẫu ngay")
+
+
+PHẦN 4.2.3 - BỘ KIT ĐỀ XUẤT (4 ảnh)
+- Tỷ lệ đề xuất: ngang ~5:3 (vd 800 x 480 px). Nền sạch, chụp chính diện bộ kit.
+
+1. bokit-01-hop-cung-mac-cai.jpg   -> Bộ Kit 01 - Hộp giấy cứng mắc cài
+2. bokit-02-hop-dang-rut.jpg       -> Bộ Kit 02 - Hộp giấy dạng rút
+3. bokit-03-hop-nap-cai.jpg        -> Bộ Kit 03 - Hộp giấy cứng nắp cài
+4. bokit-04-tui-zip.jpg            -> Bộ Kit 04 - Túi ZIP thương hiệu
+
+
+MẸO:
+- Ảnh sẽ được tự động cắt vừa khung (object-fit: cover), nên ưu tiên chủ thể nằm giữa.
+- Định dạng .jpg như đã đặt tên. Nếu muốn dùng .png, báo lại để đổi đuôi trong code.
+- Có thể xóa file hướng dẫn này sau khi đã lắp xong ảnh.
